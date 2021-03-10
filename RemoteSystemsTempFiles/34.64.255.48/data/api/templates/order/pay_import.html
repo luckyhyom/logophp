@@ -1,0 +1,117 @@
+ {% set item = result.orderInfo %}
+ {% set payGatePrepare = result.payGatePrepare %}
+ {% set settlePgConfig = result.settlePgConfig %}
+ {% set domainUrl = result.domainUrl %}
+<form id="SendPayForm_id" name="SendPayForm_id" action="{{ domainUrl ~ 'order/payImportPopup.do' }}" target="popup_window" method="POST">
+    <!-- PG NAME -->
+    <input type="hidden" name="pg" value="jtnet"> <!-- /data/api/templates/order/pay_import.html 보면 pg값을 랜덤으로 바꾸는 코드 추가됨 -->
+    <!-- pay method -->
+    <input type="hidden" name="pay_method" value="{{ payGatePrepare.payType }}">
+    <!-- merchant uid -->
+    <input type="hidden" name="merchant_uid" value="{{ payGatePrepare.orderNo }}">
+	<!-- name -->
+	<input type="hidden" name="name" value="{{ payGatePrepare.productNm }}">
+	<!-- 가격 -->
+	<input type="hidden" name="amount" value="{{ payGatePrepare.productAmt }}">
+	<!-- 에스크로 -->
+	<input type="hidden" name="escrow" value="{{ payGatePrepare.escrType }}">
+	<!-- <input type="hidden" name="amount" value="1000"> -->
+	<!-- currency [USD|KRW] -->
+	<input type="hidden" name="currency" value="{{ payGatePrepare.currency }}">
+	<!-- buyername -->
+	<input type="hidden" name="buyer_name" value="{{ payGatePrepare.userNm }}">
+	<!-- buyertel -->
+	<input type="hidden" name="buyer_tel" value="{{ payGatePrepare.userPhone1 }}">
+	<!-- buyeremail -->
+	<input type="hidden" name="buyer_email" value="{{ payGatePrepare.userMail }}">
+	<!-- postcode -->
+	<input type="hidden" name="buyer_postcode" value="{{ payGatePrepare.userZipcode }}" />
+	<!--  구매자주소 -->
+	<input type="hidden" name="buyer_addr" value="{{ payGatePrepare.userAddr }}" />
+{% if result.isMobile %}
+	<!-- returnUrl -->
+	<input type="hidden" name="m_redirect_url" value="{{ payGatePrepare.returnUrl }}">
+{% endif %}
+	
+</form>
+
+<script>
+    var IMP;
+	
+	$(document).ready(function() {
+		IMP = window.IMP;
+		IMP.init('{{ settlePgConfig.merchServerId }}');
+	});
+	
+	$(function() {
+		$('#dopay').click(
+				function() {
+					window.open("", "popup_window", "width=900, height=700, scrollbars=no");
+					$('#SendPayForm_id').submit();
+				});
+	});
+	
+	function payDone(data) {
+        if(data) {
+        	var form = document.createElement('form');
+        	
+        	for (var item in data) {
+        		var objs;
+        		objs = document.createElement('input');
+            	objs.setAttribute('type', 'hidden');
+        		objs.setAttribute('name', item);
+        		objs.setAttribute('value', data[item]);
+        		form.appendChild(objs);
+        	}
+        	
+        	form.setAttribute('method', 'post');
+
+        	form.setAttribute('action', '{{ payGatePrepare.returnUrl }}');
+
+        	document.body.appendChild(form);
+
+        	form.submit();
+        }
+    }
+</script>
+{% if result.isAdmin %}
+<form id="payform">
+	<div class="form-group">
+		<label for="productAmt">{{ 'LBL_PG_PRICE' | translate }}</label> <input
+			type="text" class="form-control" id="productAmt" name="productAmt"
+			value="{{payGatePrepare.productAmt}}">
+	</div>
+	<div class="form-group">
+		<label for="payType">{{ 'LBL_PG_TYPE' | translate }}</label> <select
+			class="form-control" id="payType" name="payType">
+			<option value="11" {% if payGatePrepare.payType== '11' %} selected="selected"{% endif %} >
+				{{ 'CODE_OPGTYPE_PC' | translate }}
+			</option>
+			<option value="21" {% if payGatePrepare.payType=='21' %} selected="selected"{% endif %}>
+				{{ 'CODE_OPGTYPE_PB' | translate }}
+			</option>
+			<option value="22" {% if payGatePrepare.payType=='22' %} selected="selected"{% endif %}>
+			{{ 'CODE_OPGTYPE_PV' | translate }}
+			</option>
+			<option value="31" {% if payGatePrepare.payType=='31' %} selected="selected"{% endif %}>
+			{{ 'CODE_OPGTYPE_PH' | translate }}
+			</option>
+		</select>
+	</div>
+</form>
+<button type="button" id="dopay" class="btn btn-primary btn-lg btn-block">
+{{ 'BTN_DOPAY' | translate }}
+</button>
+
+{% else %}
+<button type="button" id="dopay"
+	class="btn btn-primary btn-lg btn-block">
+	{{ 'BTN_DOPAY' | translate }}
+</button>
+{% if payGatePrepare.testUrl %}
+<a href="{{ payGatePrepare.testUrl }}" class="btn btn-primary btn-lg btn-block"> 
+{{ 'BTN_DOPAY' | translate }} TEST
+</a>
+{% endif %} 
+
+{% endif %}

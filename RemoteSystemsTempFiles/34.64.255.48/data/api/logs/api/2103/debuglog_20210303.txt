@@ -1,0 +1,228 @@
+===============
+Date : 2021-03-03 14:20:14
+'Date' : 2021-03-03 14:20:14
+'Name' : Vo\GoodsInfoLogVo
+'Value' : {"mallId":"logomondo","goodsCode":"G202010120879019643","logType":"V","logDate":"20210303","logCnt":1}
+
+===============
+Date : 2021-03-03 14:20:15
+'Date' : 2021-03-03 14:20:15
+'Name' : Vo\GoodsInfoLogVo
+'Value' : {"mallId":"logomondo","goodsCode":"G202010120879019643","logType":"V","logDate":"20210303","logCnt":1}
+
+===============
+Date : 2021-03-03 14:20:36
+'Date' : 2021-03-03 14:20:36
+'Name' : Vo\GoodsInfoLogVo
+'Value' : {"mallId":"logomondo","goodsCode":"G202010129109715797","logType":"V","logDate":"20210303","logCnt":1}
+
+===============
+Date : 2021-03-03 14:20:37
+'Date' : 2021-03-03 14:20:37
+'Name' : Vo\GoodsInfoLogVo
+'Value' : {"mallId":"logomondo","goodsCode":"G202010129109715797","logType":"V","logDate":"20210303","logCnt":1}
+
+===============
+Date : 2021-03-03 15:31:21
+'Date' : 2021-03-03 15:31:21
+'Name' : Vo\GoodsInfoLogVo
+'Value' : {"mallId":"logomondo","goodsCode":"G202010129109715797","logType":"V","logDate":"20210303","logCnt":1}
+
+===============
+Date : 2021-03-03 15:31:22
+'Date' : 2021-03-03 15:31:22
+'Name' : Vo\GoodsInfoLogVo
+'Value' : {"mallId":"logomondo","goodsCode":"G202010129109715797","logType":"V","logDate":"20210303","logCnt":1}
+
+===============
+Date : 2021-03-03 15:31:39
+'Date' : 2021-03-03 15:31:39
+'Name' : Vo\GoodsInfoLogVo
+'Value' : {"mallId":"logomondo","goodsCode":"G202102266283751022","logType":"V","logDate":"20210303","logCnt":1}
+
+===============
+Date : 2021-03-03 15:31:40
+'Date' : 2021-03-03 15:31:40
+'Name' : Vo\GoodsInfoLogVo
+'Value' : {"mallId":"logomondo","goodsCode":"G202102266283751022","logType":"V","logDate":"20210303","logCnt":1}
+
+===============
+Date : 2021-03-03 15:36:51
+'Date' : 2021-03-03 15:36:51
+'Name' : Vo\GoodsInfoLogVo
+'Value' : {"mallId":"logomondo","goodsCode":"G202102266283751022","logType":"V","logDate":"20210303","logCnt":1}
+
+===============
+Date : 2021-03-03 15:36:52
+'Date' : 2021-03-03 15:36:52
+'Name' : Vo\GoodsInfoLogVo
+'Value' : {"mallId":"logomondo","goodsCode":"G202102266283751022","logType":"V","logDate":"20210303","logCnt":1}
+
+===============
+Date : 2021-03-03 15:40:04
+'Date' : 2021-03-03 15:40:04
+'Name' : Vo\GoodsInfoLogVo
+'Value' : {"mallId":"logomondo","goodsCode":"G202102266283751022","logType":"V","logDate":"20210303","logCnt":1}
+
+===============
+Date : 2021-03-03 15:40:04
+'Date' : 2021-03-03 15:40:04
+'Name' : Vo\GoodsInfoLogVo
+'Value' : {"mallId":"logomondo","goodsCode":"G202102266283751022","logType":"V","logDate":"20210303","logCnt":1}
+
+===============
+Date : 2021-03-03 15:42:24
+'Date' : 2021-03-03 15:42:24
+'Name' : Vo\GoodsInfoLogVo
+'Value' : {"mallId":"logomondo","goodsCode":"G202102266283751022","logType":"V","logDate":"20210303","logCnt":1}
+
+===============
+Date : 2021-03-03 15:42:25
+'Date' : 2021-03-03 15:42:25
+'Name' : Vo\GoodsInfoLogVo
+'Value' : {"mallId":"logomondo","goodsCode":"G202102266283751022","logType":"V","logDate":"20210303","logCnt":1}
+
+===============
+Date : 2021-03-03 15:42:51
+'Date' : 2021-03-03 15:42:51
+'Name' : Vo\GoodsInfoLogVo
+'Value' : {"mallId":"logomondo","goodsCode":"G202102266283751022","logType":"V","logDate":"20210303","logCnt":1}
+
+===============
+Date : 2021-03-03 15:42:52
+'Date' : 2021-03-03 15:42:52
+'Name' : Vo\GoodsInfoLogVo
+'Value' : {"mallId":"logomondo","goodsCode":"G202102266283751022","logType":"V","logDate":"20210303","logCnt":1}
+
+===============
+Date : 2021-03-03 17:05:12
+'Date' : 2021-03-03 17:05:12
+'Name' : Vo\GoodsInfoLogVo
+'Value' : {"mallId":"logomondo","goodsCode":"G202011044454935844","logType":"V","logDate":"20210303","logCnt":1}
+
+===============
+Date : 2021-03-03 17:05:14
+'Date' : 2021-03-03 17:05:14
+'Name' : Vo\GoodsInfoLogVo
+'Value' : {"mallId":"logomondo","goodsCode":"G202011044454935844","logType":"V","logDate":"20210303","logCnt":1}
+
+===============
+Date : 2021-03-03 17:13:24
+'Date' : 2021-03-03 17:13:24
+'Name' : Vo\GoodsInfoLogVo
+'Value' : {"mallId":"logomondo","goodsCode":"G202102266283751022","logType":"V","logDate":"20210303","logCnt":1}
+
+===============
+Date : 2021-03-03 17:13:25
+'Date' : 2021-03-03 17:13:25
+'Name' : Vo\GoodsInfoLogVo
+'Value' : {"mallId":"logomondo","goodsCode":"G202102266283751022","logType":"V","logDate":"20210303","logCnt":1}
+
+===============
+Date : 2021-03-03 17:15:52
+'Date' : 2021-03-03 17:15:52
+'Name' : Vo\GoodsInfoLogVo
+'Value' : {"mallId":"logomondo","goodsCode":"G202102266283751022","logType":"V","logDate":"20210303","logCnt":1}
+
+===============
+Date : 2021-03-03 17:15:53
+'Date' : 2021-03-03 17:15:53
+'Name' : Vo\GoodsInfoLogVo
+'Value' : {"mallId":"logomondo","goodsCode":"G202102266283751022","logType":"V","logDate":"20210303","logCnt":1}
+
+===============
+Date : 2021-03-03 17:19:49
+'Date' : 2021-03-03 17:19:49
+'Name' : Vo\GoodsInfoLogVo
+'Value' : {"mallId":"logomondo","goodsCode":"G202102266283751022","logType":"V","logDate":"20210303","logCnt":1}
+
+===============
+Date : 2021-03-03 17:19:49
+'Date' : 2021-03-03 17:19:49
+'Name' : Vo\GoodsInfoLogVo
+'Value' : {"mallId":"logomondo","goodsCode":"G202102266283751022","logType":"V","logDate":"20210303","logCnt":1}
+
+===============
+Date : 2021-03-03 17:25:22
+'Date' : 2021-03-03 17:25:22
+'Name' : Vo\GoodsInfoLogVo
+'Value' : {"mallId":"logomondo","goodsCode":"G202102266283751022","logType":"V","logDate":"20210303","logCnt":1}
+
+===============
+Date : 2021-03-03 17:25:22
+'Date' : 2021-03-03 17:25:22
+'Name' : Vo\GoodsInfoLogVo
+'Value' : {"mallId":"logomondo","goodsCode":"G202102266283751022","logType":"V","logDate":"20210303","logCnt":1}
+
+===============
+Date : 2021-03-03 17:28:25
+'Date' : 2021-03-03 17:28:25
+'Name' : Vo\GoodsInfoLogVo
+'Value' : {"mallId":"logomondo","goodsCode":"G202102266283751022","logType":"V","logDate":"20210303","logCnt":1}
+
+===============
+Date : 2021-03-03 17:28:25
+'Date' : 2021-03-03 17:28:25
+'Name' : Vo\GoodsInfoLogVo
+'Value' : {"mallId":"logomondo","goodsCode":"G202102266283751022","logType":"V","logDate":"20210303","logCnt":1}
+
+===============
+Date : 2021-03-03 17:29:01
+'Date' : 2021-03-03 17:29:01
+'Name' : Vo\GoodsInfoLogVo
+'Value' : {"mallId":"logomondo","goodsCode":"G202102266283751022","logType":"V","logDate":"20210303","logCnt":1}
+
+===============
+Date : 2021-03-03 17:29:01
+'Date' : 2021-03-03 17:29:01
+'Name' : Vo\GoodsInfoLogVo
+'Value' : {"mallId":"logomondo","goodsCode":"G202102266283751022","logType":"V","logDate":"20210303","logCnt":1}
+
+===============
+Date : 2021-03-03 17:31:50
+'Date' : 2021-03-03 17:31:50
+'Name' : Vo\GoodsInfoLogVo
+'Value' : {"mallId":"logomondo","goodsCode":"G202102266283751022","logType":"V","logDate":"20210303","logCnt":1}
+
+===============
+Date : 2021-03-03 17:31:52
+'Date' : 2021-03-03 17:31:52
+'Name' : Vo\GoodsInfoLogVo
+'Value' : {"mallId":"logomondo","goodsCode":"G202102266283751022","logType":"V","logDate":"20210303","logCnt":1}
+
+===============
+Date : 2021-03-03 17:32:42
+'Date' : 2021-03-03 17:32:42
+'Name' : Vo\GoodsInfoLogVo
+'Value' : {"mallId":"logomondo","goodsCode":"G202102266283751022","logType":"V","logDate":"20210303","logCnt":1}
+
+===============
+Date : 2021-03-03 17:32:43
+'Date' : 2021-03-03 17:32:43
+'Name' : Vo\GoodsInfoLogVo
+'Value' : {"mallId":"logomondo","goodsCode":"G202102266283751022","logType":"V","logDate":"20210303","logCnt":1}
+
+===============
+Date : 2021-03-03 17:32:46
+'Date' : 2021-03-03 17:32:46
+'Name' : Vo\GoodsInfoLogVo
+'Value' : {"mallId":"logomondo","goodsCode":"G202102266283751022","logType":"V","logDate":"20210303","logCnt":1}
+
+===============
+Date : 2021-03-03 17:32:46
+'Date' : 2021-03-03 17:32:46
+'Name' : Vo\GoodsInfoLogVo
+'Value' : {"mallId":"logomondo","goodsCode":"G202102266283751022","logType":"V","logDate":"20210303","logCnt":1}
+
+===============
+Date : 2021-03-03 17:34:47
+'Date' : 2021-03-03 17:34:47
+'Name' : Vo\GoodsInfoLogVo
+'Value' : {"mallId":"logomondo","goodsCode":"G202102266283751022","logType":"V","logDate":"20210303","logCnt":1}
+
+===============
+Date : 2021-03-03 17:34:48
+'Date' : 2021-03-03 17:34:48
+'Name' : Vo\GoodsInfoLogVo
+'Value' : {"mallId":"logomondo","goodsCode":"G202102266283751022","logType":"V","logDate":"20210303","logCnt":1}
+

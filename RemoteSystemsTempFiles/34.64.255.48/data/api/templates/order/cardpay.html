@@ -1,0 +1,18 @@
+
+<h3>{{ result.orderInfo.payInfo.goodsNm }}</h3>
+
+{{ result.orderInfo.payInfo.sumPrice}}
+<script>
+$(function() {
+	$('#payForm').submit();
+});
+</script>
+<form id="payForm" action="{{ result.pgInfo.payUrl }}" method="post">
+	<input type="text" name="payType" value="{{ result.pgInfo.payType }}">
+	<input type="text" name="price" value="{{ result.pgInfo.price }}">
+	<input type="text" name="currency" value="{{ result.pgInfo.currency }}">
+	<input type="text" name="goodsNm" value="{{ result.pgInfo.goodsNm }}">
+	<input type="text" name="orderCd" value="{{ result.pgInfo.orderCd }}">
+	<input type="text" name="nextUrl" value="{{ result.pgInfo.nextUrl }}">
+</form>
+{{ result.payUrl }}

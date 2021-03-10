@@ -1,0 +1,3279 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//hanbiz.kr//DTD SQL Map 1.0//EN" "../sql-map-mapper.dtd">
+<sqlMap>
+	<createTable><![CDATA[
+# The Sqlmap for table kbm_goods_info(상품정보)
+
+CREATE TABLE `kbm_goods_info` (
+  `mall_id` VARCHAR(50) NOT NULL DEFAULT '' COMMENT '몰아이디',
+  `goods_code` VARCHAR(50) NOT NULL DEFAULT '' COMMENT '상품코드',
+  `goods_category` VARCHAR(500) NOT NULL DEFAULT '' COMMENT '카테고리',
+  `goods_category_mst` VARCHAR(50) NOT NULL DEFAULT '' COMMENT '대표 카테고리',
+  `goods_display_fl` VARCHAR(1) NOT NULL DEFAULT 'Y' COMMENT 'PC쇼핑몰 노출상태',
+  `goods_display_mobile_fl` VARCHAR(1) NOT NULL DEFAULT 'Y' COMMENT '모바일쇼핑몰 노출상태',
+  `goods_sell_fl` VARCHAR(1) NOT NULL DEFAULT 'Y' COMMENT 'PC쇼핑몰 판매상태',
+  `goods_sell_mobile_fl` VARCHAR(1) NOT NULL DEFAULT 'Y' COMMENT '모바일쇼핑몰 판매상태',
+  `goods_sell_type` VARCHAR(1) NOT NULL DEFAULT 'B' COMMENT '상품 판매 형태',
+  `seller_mem_no` INT(10) NOT NULL DEFAULT '0' COMMENT '판매자 회원번호',
+  `seller_mem_nm` VARCHAR(50) NOT NULL DEFAULT '' COMMENT '판매자 이름',
+  `use_commission` VARCHAR(1) NOT NULL DEFAULT 'Y' COMMENT '상품 수수료율 적용여부',
+  `commission` DOUBLE(12,2) NOT NULL DEFAULT '0' COMMENT '수수료',
+  `goods_cd` VARCHAR(30) NOT NULL DEFAULT '' COMMENT '자체 상품코드',
+  `goods_nm` VARCHAR(100) NOT NULL DEFAULT '' COMMENT '상품명',
+  `goods_nm_locale` VARCHAR(500) NOT NULL DEFAULT '' COMMENT '상품명 로케일',
+  `goods_search_word` VARCHAR(250) NOT NULL DEFAULT '' COMMENT '검색 키워드',
+  `goods_open_dt` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '상품 노출 시작시간',
+  `goods_close_dt` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '상품 노출 종료시간',
+  `goods_state` VARCHAR(1) NOT NULL DEFAULT 'N' COMMENT '상품상태',
+  `goods_color` VARCHAR(200) NOT NULL DEFAULT '' COMMENT '상품 대표색상',
+  `brand_cd` VARCHAR(30) NOT NULL DEFAULT '' COMMENT '브랜드',
+  `maker_nm` VARCHAR(50) NOT NULL DEFAULT '' COMMENT '제조사',
+  `origin_nm` VARCHAR(50) NOT NULL DEFAULT '' COMMENT '원산지',
+  `hscode` VARCHAR(30) NOT NULL DEFAULT '' COMMENT 'HS코드',
+  `hscode_locale` VARCHAR(300) NOT NULL DEFAULT '' COMMENT 'HS코드 로케일',
+  `make_ymd` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '제조일',
+  `launch_ymd` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '출시일',
+  `effective_start_ymd` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '유효 시작일자',
+  `effective_end_ymd` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '유효 종료일자',
+  `goods_permission` VARCHAR(1) NOT NULL DEFAULT 'A' COMMENT '구매가능 회원 형태',
+  `member_group_no` VARCHAR(200) NOT NULL DEFAULT '' COMMENT '구매가능 회원등급',
+  `only_adult_fl` VARCHAR(1) NOT NULL DEFAULT 'N' COMMENT '성인인증',
+  `only_adult_display_fl` VARCHAR(20) NOT NULL DEFAULT '' COMMENT '성인인증',
+  `goods_access` VARCHAR(1) NOT NULL DEFAULT 'A' COMMENT '접근 권한',
+  `add_info` TEXT NOT NULL DEFAULT '' COMMENT '추가항목',
+  `added_field01` VARCHAR(255) NOT NULL DEFAULT '' COMMENT '추가 필드 항목 01',
+  `added_field02` VARCHAR(255) NOT NULL DEFAULT '' COMMENT '추가 필드 항목 02',
+  `added_field03` VARCHAR(255) NOT NULL DEFAULT '' COMMENT '추가 필드 항목 03',
+  `added_field04` VARCHAR(255) NOT NULL DEFAULT '' COMMENT '추가 필드 항목 04',
+  `added_field05` VARCHAR(255) NOT NULL DEFAULT '' COMMENT '추가 필드 항목 05',
+  `added_field06` VARCHAR(255) NOT NULL DEFAULT '' COMMENT '추가 필드 항목 06',
+  `added_field07` VARCHAR(255) NOT NULL DEFAULT '' COMMENT '추가 필드 항목 07',
+  `added_field08` VARCHAR(255) NOT NULL DEFAULT '' COMMENT '추가 필드 항목 08',
+  `added_field09` VARCHAR(255) NOT NULL DEFAULT '' COMMENT '추가 필드 항목 09',
+  `added_field10` VARCHAR(255) NOT NULL DEFAULT '' COMMENT '추가 필드 항목 10',
+  `add_must_info` TEXT NOT NULL DEFAULT '' COMMENT '상품 필수정보',
+  `tax_percent` DOUBLE(12,2) NOT NULL DEFAULT '10' COMMENT '과세/면세',
+  `goods_weight` DOUBLE(12,2) NOT NULL DEFAULT '0.0' COMMENT '상품 무게',
+  `stock_fl` VARCHAR(1) NOT NULL DEFAULT 'N' COMMENT '판매 재고',
+  `stock_cnt` INT(10) NOT NULL DEFAULT '0' COMMENT '상품 재고',
+  `sales_unit` INT(3) NOT NULL DEFAULT '1' COMMENT '묶음주문 단위',
+  `sold_out_fl` VARCHAR(1) NOT NULL DEFAULT 'N' COMMENT '품절 상태',
+  `min_order_cnt` INT(5) NOT NULL DEFAULT '1' COMMENT '최소 구매수량',
+  `max_order_cnt` INT(5) NOT NULL DEFAULT '0' COMMENT '최대 구매수량',
+  `sales_open_date` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '시작 판매기간',
+  `sales_close_date` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '종료 판매기간',
+  `mileage_fl` VARCHAR(1) NOT NULL DEFAULT 'C' COMMENT '적립금 지급방법',
+  `mileage_goods` DOUBLE(12,2) NOT NULL DEFAULT '0' COMMENT '적립금 금액',
+  `mileage_goods_unit` VARCHAR(1) NOT NULL DEFAULT 'P' COMMENT '적립금 단위',
+  `mileage_group` VARCHAR(200) NOT NULL DEFAULT '' COMMENT '적립금 대상',
+  `goods_discount_fl` VARCHAR(1) NOT NULL DEFAULT 'N' COMMENT '제외 혜택 선택',
+  `fixed_goods_discount` VARCHAR(50) NOT NULL DEFAULT '' COMMENT '할인금액 기준',
+  `goods_discount_group` VARCHAR(1) NOT NULL DEFAULT '' COMMENT '할인금액 대상',
+  `goods_discount_group_member_info` VARCHAR(200) NOT NULL DEFAULT '' COMMENT '할인금액 대상 선택',
+  `except_benefit` VARCHAR(200) NOT NULL DEFAULT '' COMMENT '제외 혜택',
+  `except_benefit_group` VARCHAR(200) NOT NULL DEFAULT '' COMMENT '제외 대상',
+  `except_benefit_group_info` VARCHAR(200) NOT NULL DEFAULT '' COMMENT '제외 대상 특정 그룹',
+  `fixed_price` DOUBLE(12,2) NOT NULL DEFAULT '0' COMMENT '정가',
+  `cost_price` DOUBLE(12,2) NOT NULL DEFAULT '0' COMMENT '매입가',
+  `goods_price` DOUBLE(12,2) NOT NULL DEFAULT '0' COMMENT '판매가',
+  `goods_price_string` VARCHAR(200) NOT NULL DEFAULT '' COMMENT '가격 대체 문구',
+  `goods_price_fl` VARCHAR(1) NOT NULL DEFAULT 'Y' COMMENT '가격정책 Y : 회원 그룹, N : 판매가 고정 , G : 상품 회원 그룹',
+  `goods_price_group` MEDIUMTEXT NOT NULL DEFAULT '' COMMENT '상품 그룹별 가격 정책',
+  `goods_price_unit` varchar(200) NOT NULL DEFAULT '' COMMENT '판매단위',
+  `goods_price_type` VARCHAR(1) NOT NULL DEFAULT 'Y' COMMENT '가격 설정 방법 Y : 판매가로 가격 설정, N : 공임비로 가격 설정',
+  `connerstone_price` DOUBLE(12,2) NOT NULL DEFAULT '0' COMMENT '코너스톤 공급가',
+  `labor_cost_price` DOUBLE(12,2) NOT NULL DEFAULT '0' COMMENT '공임비',
+  `labor_metal_type` varchar(200) NOT NULL DEFAULT '' COMMENT '메탈별 가격 메탈 타입',
+  `labor_metal_lower_type` varchar(200) NOT NULL DEFAULT '' COMMENT '메탈별 가격 메탈 하위 타입',
+  `delivery_nation` VARCHAR(3) NOT NULL DEFAULT 'kr' COMMENT '배송지 국가',
+  `delivery_packing_rule` VARCHAR(1) NOT NULL DEFAULT '' COMMENT '포장비 규칙 N : 사용안함, Y : 사용(개별 상품 규칙), O : 주문단위 규칙(같은 배송 정책에 대하여 최대값 설정)',
+  `delivery_packing_price` MEDIUMTEXT NOT NULL DEFAULT '' COMMENT '포장비 가격 규칙',
+  `option_fl` VARCHAR(1) NOT NULL DEFAULT 'N' COMMENT '옵션 사용',
+  `option_file` VARCHAR(255) NOT NULL DEFAULT '' COMMENT '옵션 파일',
+  `goods_attr` VARCHAR(1000) NOT NULL DEFAULT '' COMMENT '상품 속성',
+  `goods_mall_search_option` VARCHAR(1000) NOT NULL DEFAULT '' COMMENT '상품 몰 검색 옵션',
+  `goods_search_option` VARCHAR(1000) NOT NULL DEFAULT '' COMMENT '상품 공통 검색 옵션',
+  `option_data` TEXT NOT NULL DEFAULT '' COMMENT '옵션 데이타',
+  `option_display_fl` VARCHAR(1) NOT NULL DEFAULT 'S' COMMENT '옵션 노출 방식',
+  `option_display_image` VARCHAR(200) NOT NULL DEFAULT '' COMMENT '옵션 이미지 노출 설정',
+  `options_name` TEXT NOT NULL DEFAULT '' COMMENT '필수 옵션 명',
+  `options` MEDIUMTEXT NOT NULL DEFAULT '' COMMENT '필수 옵션',
+  `options_ext_fl` VARCHAR(1) NOT NULL DEFAULT 'N' COMMENT '선택 옵션 사용',
+  `options_ext_name` TEXT NOT NULL DEFAULT '' COMMENT '선택 옵션 명',
+  `options_ext` MEDIUMTEXT NOT NULL DEFAULT '' COMMENT '선택 옵션',
+  `option_text_fl` VARCHAR(1) NOT NULL DEFAULT 'N' COMMENT '텍스트 옵션',
+  `options_text_name` TEXT NOT NULL DEFAULT '' COMMENT '텍스트 옵션 명',
+  `options_text` MEDIUMTEXT NOT NULL DEFAULT '' COMMENT '텍스트 옵션',
+  `option_ref_fl` VARCHAR(1) NOT NULL DEFAULT 'N' COMMENT '추가상품',
+  `options_ref_name` TEXT NOT NULL DEFAULT '' COMMENT '추가상품 옵션 명',
+  `options_ref` MEDIUMTEXT NOT NULL DEFAULT '' COMMENT '추가상품 정보',
+  `goods_mall_data` TEXT NOT NULL DEFAULT '' COMMENT '상품 몰 데이타',
+  `goods_image_master` VARCHAR(200) NOT NULL DEFAULT '' COMMENT '대표이미지',
+  `goods_image_added` TEXT NOT NULL DEFAULT '' COMMENT '추가 이미지',
+  `short_description` VARCHAR(200) NOT NULL DEFAULT '' COMMENT '상품 상세 짧은 설명',
+  `short_description_locale` TEXT NOT NULL DEFAULT '' COMMENT '상품 상세 짧은 설명 로케일',
+  `event_description` VARCHAR(200) NOT NULL DEFAULT '' COMMENT '상품 상세 이벤트문구',
+  `event_description_locale` TEXT NOT NULL DEFAULT '' COMMENT '상품 상세 이벤트문구 로케일',
+  `goods_description` TEXT NOT NULL DEFAULT '' COMMENT '상품 상세 PC쇼핑몰 상세 설명',
+  `goods_description_locale` TEXT NOT NULL DEFAULT '' COMMENT '상품 상세 PC쇼핑몰 상세 설명 로케일',
+  `goods_description_same_fl` VARCHAR(1) NOT NULL DEFAULT 'Y' COMMENT 'PC/모바일 상세설명 동일사용',
+  `goods_description_mobile` TEXT NOT NULL DEFAULT '' COMMENT '상품 상세 모바일쇼핑몰 상세 설명',
+  `goods_description_mobile_locale` TEXT NOT NULL DEFAULT '' COMMENT '상품 상세 모바일쇼핑몰 상세 설명 로케일',
+  `delivery_fl` VARCHAR(200) NOT NULL DEFAULT '' COMMENT '배송방법',
+  `delivery_option` VARCHAR(200) NOT NULL DEFAULT '' COMMENT '개별배송방법',
+  `ref_goods_fl` VARCHAR(1) NOT NULL DEFAULT 'N' COMMENT '관련상품 사용',
+  `ref_goods` TEXT NOT NULL DEFAULT '' COMMENT '관련상품',
+  `goods_icon_open_date` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '아이콘기간제한용 시작일',
+  `goods_icon_close_date` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '아이콘기간제한용 종료일',
+  `goods_icon_time` VARCHAR(200) NOT NULL DEFAULT '' COMMENT '아이콘기간제한용',
+  `goods_icon_fix` VARCHAR(200) NOT NULL DEFAULT '' COMMENT '아이콘무제한용',
+  `external_video_fl` VARCHAR(1) NOT NULL DEFAULT 'N' COMMENT '외부 동영상 사용상태',
+  `external_video_url` VARCHAR(200) NOT NULL DEFAULT '' COMMENT '외부 동영상 퍼가기 소스 ',
+  `external_video_width` INT(3) NOT NULL DEFAULT '640' COMMENT '외부 동영상 가로',
+  `external_video_height` INT(3) NOT NULL DEFAULT '360' COMMENT '외부 동영상 세로',
+  `detail_info_delivery_fl` VARCHAR(1) NOT NULL DEFAULT 'N' COMMENT '이용안내 배송안내 사용여부',
+  `detail_info_delivery` TEXT NOT NULL DEFAULT '' COMMENT '이용안내 배송안내',
+  `detail_info_as_fl` VARCHAR(1) NOT NULL DEFAULT 'N' COMMENT '이용안내 AS안내 사용여부',
+  `detail_info_as` TEXT NOT NULL DEFAULT '' COMMENT '이용안내 AS안내',
+  `detail_info_refund_fl` VARCHAR(1) NOT NULL DEFAULT 'N' COMMENT '이용안내 환불안내 사용여부',
+  `detail_info_refund` TEXT NOT NULL DEFAULT '' COMMENT '이용안내 환불안내',
+  `detail_info_exchange_fl` VARCHAR(1) NOT NULL DEFAULT 'N' COMMENT '이용안내 교환안내 사용여부',
+  `detail_info_exchange` TEXT NOT NULL DEFAULT '' COMMENT '이용안내 교환안내',
+  `seo_tag_fl` VARCHAR(1) NOT NULL DEFAULT 'N' COMMENT '상품 개별 SEO 태그 사용여부',
+  `seo_tag` TEXT NOT NULL DEFAULT '' COMMENT '상품 개별 SEO 태그 타이틀',
+  `naver_fl` VARCHAR(1) NOT NULL DEFAULT 'N' COMMENT '네이버쇼핑 노출여부',
+  `naver_options` TEXT NOT NULL DEFAULT '' COMMENT '네이버쇼핑',
+  `facebook_fl` VARCHAR(1) NOT NULL DEFAULT 'N' COMMENT '페이스북 노출여부',
+  `facebook_options` TEXT NOT NULL DEFAULT '' COMMENT '페이스북',
+  `memo` VARCHAR(250) NOT NULL DEFAULT '' COMMENT '관리자 메모',
+  `review_cnt` INT(10) NOT NULL DEFAULT '0' COMMENT '상품 리뷰수',
+  `review_point` DOUBLE(12,2) NOT NULL DEFAULT '0' COMMENT '상품 리뷰 점수',
+  `review_date` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '마지막 상품 리뷰 등록일',
+  `qna_cnt` INT(10) NOT NULL DEFAULT '0' COMMENT '상품 QNA수',
+  `qna_unanswered_cnt` INT(10) NOT NULL DEFAULT '0' COMMENT '상품 QNA 미답변수',
+  `qna_date` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '마지막 상품 QNA 등록일',
+  `is_hidden_fl` VARCHAR(1) NOT NULL DEFAULT 'N' COMMENT '숨김여부 노출여부',
+  `goods_sort_fix` VARCHAR(1) NOT NULL DEFAULT 'N' COMMENT '진열 순서 상단 고정',
+  `goods_sort_ord` INT(10) NOT NULL DEFAULT '0' COMMENT '상품 진열 순서',
+  `scm_reg_date` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '공급업체 상품수정 등록일',
+  `scm_mod_date` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '공급업체 상품수정 수정',
+  `scm_unapply_cnt` INT(10) NOT NULL DEFAULT '0' COMMENT '공급업체 상품수정 미반영건수',
+  `scm_apply_cnt` INT(10) NOT NULL DEFAULT '0' COMMENT '공급업체 상품수정 반영건수',
+  `delivery_detail` TEXT NOT NULL DEFAULT '' COMMENT '배송 설정',
+  `reg_date` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '등록일',
+  `mod_date` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '수정일',
+  PRIMARY KEY (`mall_id`,`goods_code`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE utf8mb4_unicode_ci COMMENT='상품정보';
+
+CREATE TABLE `kbm_goods_category` (
+	`mall_id` VARCHAR(50) NOT NULL DEFAULT '' COMMENT '몰아이디',
+	`cate_type` VARCHAR(1) NOT NULL DEFAULT 'C' COMMENT '카테고리 타입',
+	`is_master` VARCHAR(1) NOT NULL DEFAULT 'N' COMMENT '마스트 카테고리',
+	`goods_code` VARCHAR(50) NOT NULL DEFAULT '' COMMENT '상품코드',
+	`goods_category` VARCHAR(50) NOT NULL DEFAULT '' COMMENT '카테고리',
+	`goods_category_ord` INT(10) NOT NULL DEFAULT '0' COMMENT '진열순서',
+	`goods_category_fix` VARCHAR(1) NOT NULL DEFAULT 'N' COMMENT '상단고정',
+	PRIMARY KEY (`mall_id`,`cate_type`,`goods_code`,`goods_category`),
+	UNIQUE KEY `goods_category_ord` (`goods_category`,`goods_category_ord`),
+	KEY `goods_code` (`mall_id`, `goods_code`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE utf8mb4_unicode_ci COMMENT='상품카테고리';
+
+CREATE TABLE `kbm_goods_search_option` (
+	`mall_id` VARCHAR(50) NOT NULL DEFAULT '' COMMENT '몰아이디',
+	`goods_code` VARCHAR(50) NOT NULL DEFAULT '' COMMENT '상품코드',
+	`goods_option` VARCHAR(50) NOT NULL DEFAULT '' COMMENT '검색옵션',
+	PRIMARY KEY (`mall_id`,`goods_code`,`goods_option`),
+	KEY `goods_option` (`mall_id`, `goods_option`),
+	KEY `goods_code` (`mall_id`, `goods_code`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE utf8mb4_unicode_ci COMMENT='상품 검색옵션';
+
+	]]></createTable>
+	<resultMap id="goodsInfoList" class="Vo\GoodsInfoVo">
+		<result property="mallId" column="MALL_ID"/>
+		<result property="goodsCode" column="GOODS_CODE"/>
+		<result property="goodsCategory" column="GOODS_CATEGORY" typeHandler="explode"/>
+		<result property="goodsCategoryMst" column="GOODS_CATEGORY_MST"/>
+		<result property="goodsDisplayFl" column="GOODS_DISPLAY_FL"/>
+		<result property="goodsDisplayMobileFl" column="GOODS_DISPLAY_MOBILE_FL"/>
+		<result property="goodsSellFl" column="GOODS_SELL_FL"/>
+		<result property="goodsSellMobileFl" column="GOODS_SELL_MOBILE_FL"/>
+		<result property="goodsSellType" column="GOODS_SELL_TYPE"/>
+		<result property="sellerMemNo" column="SELLER_MEM_NO"/>
+		<result property="sellerMemNm" column="SELLER_MEM_NM"/>
+		<result property="useCommission" column="USE_COMMISSION"/>
+		<result property="commission" column="COMMISSION" typeHandler="int2float"/>
+		<result property="goodsCd" column="GOODS_CD"/>
+		<result property="goodsNm" column="GOODS_NM"/>
+		<result property="goodsNmLocale" column="GOODS_NM_LOCALE" typeHandler="unserialize"/>
+		<result property="goodsSearchWord" column="GOODS_SEARCH_WORD"/>
+		<result property="goodsOpenDt" column="GOODS_OPEN_DT" typeHandler="datetime"/>
+		<result property="goodsCloseDt" column="GOODS_CLOSE_DT" typeHandler="datetime"/>
+		<result property="goodsState" column="GOODS_STATE"/>
+		<result property="goodsColor" column="GOODS_COLOR" typeHandler="explode"/>
+		<result property="brandCd" column="BRAND_CD"/>
+		<result property="brandNm" column="BRAND_NM"/>
+		<result property="makerNm" column="MAKER_NM"/>
+		<result property="originNm" column="ORIGIN_NM"/>
+		<result property="hscode" column="HSCODE"/>
+		<result property="hscodeLocale" column="HSCODE_LOCALE" typeHandler="unserialize"/>
+		<result property="makeYmd" column="MAKE_YMD" typeHandler="datenull"/>
+		<result property="launchYmd" column="LAUNCH_YMD" typeHandler="datenull"/>
+		<result property="effectiveStartYmd" column="EFFECTIVE_START_YMD" typeHandler="datenull"/>
+		<result property="effectiveEndYmd" column="EFFECTIVE_END_YMD" typeHandler="datenull"/>
+		<result property="goodsPermission" column="GOODS_PERMISSION"/>
+		<result property="memberGroupNo" column="MEMBER_GROUP_NO" typeHandler="explode"/>
+		<result property="onlyAdultFl" column="ONLY_ADULT_FL"/>
+		<result property="onlyAdultDisplayFl" column="ONLY_ADULT_DISPLAY_FL" typeHandler="explode"/>
+		<result property="goodsAccess" column="GOODS_ACCESS"/>
+		<result property="addInfo" column="ADD_INFO" typeHandler="unserialize"/>
+		<result property="addedField01" column="ADDED_FIELD01"/>
+		<result property="addedField02" column="ADDED_FIELD02"/>
+		<result property="addedField03" column="ADDED_FIELD03"/>
+		<result property="addedField04" column="ADDED_FIELD04"/>
+		<result property="addedField05" column="ADDED_FIELD05"/>
+		<result property="addedField06" column="ADDED_FIELD06"/>
+		<result property="addedField07" column="ADDED_FIELD07"/>
+		<result property="addedField08" column="ADDED_FIELD08"/>
+		<result property="addedField09" column="ADDED_FIELD09"/>
+		<result property="addedField10" column="ADDED_FIELD10"/>
+		<result property="addMustInfo" column="ADD_MUST_INFO" typeHandler="unserialize"/>
+		<result property="taxPercent" column="TAX_PERCENT"/>
+		<result property="goodsWeight" column="GOODS_WEIGHT"/>
+		<result property="stockFl" column="STOCK_FL"/>
+		<result property="stockCnt" column="STOCK_CNT"/>
+		<result property="salesUnit" column="SALES_UNIT"/>
+		<result property="soldOutFl" column="SOLD_OUT_FL"/>
+		<result property="minOrderCnt" column="MIN_ORDER_CNT"/>
+		<result property="maxOrderCnt" column="MAX_ORDER_CNT"/>
+		<result property="salesOpenDate" column="SALES_OPEN_DATE" typeHandler="datetimenull"/>
+		<result property="salesCloseDate" column="SALES_CLOSE_DATE" typeHandler="datetimenull"/>
+		<result property="mileageFl" column="MILEAGE_FL"/>
+		<result property="mileageGoods" column="MILEAGE_GOODS"/>
+		<result property="mileageGoodsUnit" column="MILEAGE_GOODS_UNIT"/>
+		<result property="mileageGroup" column="MILEAGE_GROUP" typeHandler="explode"/>
+		<result property="goodsDiscountFl" column="GOODS_DISCOUNT_FL"/>
+		<result property="fixedGoodsDiscount" column="FIXED_GOODS_DISCOUNT"/>
+		<result property="goodsDiscountGroup" column="GOODS_DISCOUNT_GROUP"/>
+		<result property="goodsDiscountGroupMemberInfo" column="GOODS_DISCOUNT_GROUP_MEMBER_INFO"/>
+		<result property="exceptBenefit" column="EXCEPT_BENEFIT"/>
+		<result property="exceptBenefitGroup" column="EXCEPT_BENEFIT_GROUP"/>
+		<result property="exceptBenefitGroupInfo" column="EXCEPT_BENEFIT_GROUP_INFO"/>
+		<result property="fixedPrice" column="FIXED_PRICE"/>
+		<result property="costPrice" column="COST_PRICE"/>
+		<result property="goodsPrice" column="GOODS_PRICE"/>
+		<result property="goodsPriceString" column="GOODS_PRICE_STRING"/>
+		<result property="goodsPriceFl" column="GOODS_PRICE_FL"/>
+		<result property="goodsPriceGroup" column="GOODS_PRICE_GROUP" typeHandler="unserialize"/>
+		<result property="goodsPriceUnit" column="GOODS_PRICE_UNIT"/>
+		<result property="goodsPriceType" column="GOODS_PRICE_TYPE"/>
+		<result property="connerstonePrice" column="CONNERSTONE_PRICE" />
+		<result property="laborCostPrice" column="LABOR_COST_PRICE" />
+		<result property="laborMetalType" column="LABOR_METAL_TYPE" />
+		<result property="laborMetalLowerType" column="LABOR_METAL_LOWER_TYPE" />
+		<result property="deliveryNation" column="DELIVERY_NATION"/>
+		<result property="deliveryPackingRule" column="DELIVERY_PACKING_RULE"/>
+		<result property="deliveryPackingPrice" column="DELIVERY_PACKING_PRICE" typeHandler="unserialize"/>
+		<result property="optionFl" column="OPTION_FL"/>
+		<result property="optionFile" column="OPTION_FILE"/>
+		<result property="optionDisplayFl" column="OPTION_DISPLAY_FL"/>
+		<result property="optionDisplayImage" column="OPTION_DISPLAY_IMAGE"/>
+		<result property="optionsName" column="OPTIONS_NAME" typeHandler="unserialize"/>
+		<result property="options" column="OPTIONS" typeHandler="unserialize"/>
+		<result property="optionsExtFl" column="OPTIONS_EXT_FL"/>
+		<result property="optionsExtName" column="OPTIONS_EXT_NAME" typeHandler="unserialize"/>
+		<result property="optionsExt" column="OPTIONS_EXT" typeHandler="unserialize"/>
+		<result property="optionTextFl" column="OPTION_TEXT_FL"/>
+		<result property="optionsTextName" column="OPTIONS_TEXT_NAME" typeHandler="unserialize"/>
+		<result property="optionsText" column="OPTIONS_TEXT" typeHandler="unserialize"/>
+		<result property="optionRefFl" column="OPTION_REF_FL"/>
+		<result property="optionsRefName" column="OPTIONS_REF_NAME" typeHandler="unserialize"/>
+		<result property="optionsRef" column="OPTIONS_REF" typeHandler="unserialize"/>
+		<result property="optionData" column="OPTION_DATA" typeHandler="unserialize"/>
+		<result property="goodsMallData" column="GOODS_MALL_DATA" typeHandler="unserialize"/>
+		<result property="goodsMallSearchOption" column="GOODS_MALL_SEARCH_OPTION" typeHandler="explode"/>
+		<result property="goodsSearchOption" column="GOODS_SEARCH_OPTION" typeHandler="explode"/>
+		<result property="goodsAttr" column="GOODS_ATTR" typeHandler="explode"/>
+		<result property="goodsImageMaster" column="GOODS_IMAGE_MASTER"/>
+		<result property="goodsImageAdded" column="GOODS_IMAGE_ADDED"/>
+		<result property="shortDescription" column="SHORT_DESCRIPTION"/>
+		<result property="shortDescriptionLocale" column="SHORT_DESCRIPTION_LOCALE" typeHandler="unserialize"/>
+		<result property="eventDescription" column="EVENT_DESCRIPTION"/>
+		<result property="eventDescriptionLocale" column="EVENT_DESCRIPTION_LOCALE" typeHandler="unserialize"/>
+		<result property="goodsDescription" column="GOODS_DESCRIPTION"/>
+		<result property="goodsDescriptionLocale" column="GOODS_DESCRIPTION_LOCALE" typeHandler="unserialize"/>
+		<result property="goodsDescriptionSameFl" column="GOODS_DESCRIPTION_SAME_FL"/>
+		<result property="goodsDescriptionMobile" column="GOODS_DESCRIPTION_MOBILE"/>
+		<result property="goodsDescriptionMobileLocale" column="GOODS_DESCRIPTION_MOBILE_LOCALE" typeHandler="unserialize"/>
+		<result property="deliveryFl" column="DELIVERY_FL"/>
+		<result property="deliveryOption" column="DELIVERY_OPTION"/>
+		<result property="refGoodsFl" column="REF_GOODS_FL"/>
+		<result property="refGoods" column="REF_GOODS" typeHandler="explode"/>
+		<result property="goodsIconOpenDate" column="GOODS_ICON_OPEN_DATE" typeHandler="datenull"/>
+		<result property="goodsIconOpenDateTime" column="GOODS_ICON_OPEN_DATE" typeHandler="datetimestamp"/>
+		<result property="goodsIconCloseDate" column="GOODS_ICON_CLOSE_DATE" typeHandler="datenull"/>
+		<result property="goodsIconCloseDateTime" column="GOODS_ICON_CLOSE_DATE" typeHandler="datetimestamp"/>
+		<result property="goodsIconTime" column="GOODS_ICON_TIME" typeHandler="explode"/>
+		<result property="goodsIconFix" column="GOODS_ICON_FIX" typeHandler="explode"/>
+		<result property="externalVideoFl" column="EXTERNAL_VIDEO_FL"/>
+		<result property="externalVideoUrl" column="EXTERNAL_VIDEO_URL"/>
+		<result property="externalVideoWidth" column="EXTERNAL_VIDEO_WIDTH"/>
+		<result property="externalVideoHeight" column="EXTERNAL_VIDEO_HEIGHT"/>
+		<result property="detailInfoDeliveryFl" column="DETAIL_INFO_DELIVERY_FL"/>
+		<result property="detailInfoDelivery" column="DETAIL_INFO_DELIVERY"/>
+		<result property="detailInfoAsFl" column="DETAIL_INFO_AS_FL"/>
+		<result property="detailInfoAs" column="DETAIL_INFO_AS"/>
+		<result property="detailInfoRefundFl" column="DETAIL_INFO_REFUND_FL"/>
+		<result property="detailInfoRefund" column="DETAIL_INFO_REFUND"/>
+		<result property="detailInfoExchangeFl" column="DETAIL_INFO_EXCHANGE_FL"/>
+		<result property="detailInfoExchange" column="DETAIL_INFO_EXCHANGE"/>
+		<result property="seoTagFl" column="SEO_TAG_FL"/>
+		<result property="seoTag" column="SEO_TAG" typeHandler="unserialize"/>
+		<result property="naverFl" column="NAVER_FL"/>
+		<result property="naverOptions" column="NAVER_OPTIONS" typeHandler="unserialize"/>
+		<result property="facebookFl" column="FACEBOOK_FL"/>
+		<result property="facebookOptions" column="FACEBOOK_OPTIONS" typeHandler="unserialize"/>
+		<result property="reviewCnt" column="REVIEW_CNT"/>
+		<result property="reviewPoint" column="REVIEW_POINT"/>
+		<result property="reviewDate" column="REVIEW_DATE" typeHandler="datetimenull"/>
+		<result property="qnaCnt" column="QNA_CNT"/>
+		<result property="qnaUnansweredCnt" column="QNA_UNANSWERED_CNT"/>
+		<result property="qnaDate" column="QNA_DATE" typeHandler="datetimenull"/>
+		<result property="memo" column="MEMO"/>
+		<result property="scmRegDate" column="SCM_REG_DATE"/>
+		<result property="scmModDate" column="SCM_MOD_DATE"/>
+		<result property="scmUnapplyCnt" column="SCM_UNAPPLY_CNT"/>
+		<result property="scmApplyCnt" column="SCM_APPLY_CNT"/>
+		<result property="deliveryDetail" column="DELIVERY_DETAIL" typeHandler="unserialize"/>
+		<result property="regDate" column="REG_DATE"/>
+		<result property="modDate" column="MOD_DATE"/>
+		<association  property="goodsFavorVo" class="Vo\GoodsFavorVo">
+			<result property="mallId" column="F_MALL_ID"/>
+			<result property="goodsCode" column="F_GOODS_CODE"/>
+			<result property="token" column="F_TOKEN"/>
+			<result property="regDate" column="F_REG_DATE"/>
+		</association>
+	</resultMap>
+	
+
+	<resultMap id="goodsInfoCategoryList" extends="goodsInfoList" class="Vo\GoodsInfoVo">
+		<association property="categoryVo" class="Vo\GoodsCategoryVo">
+			<result property="mallId" column="MALL_ID"/>
+			<result property="cateType" column="CATE_TYPE"/>
+			<result property="isMaster" column="IS_MASTER"/>
+			<result property="goodsCode" column="GOODS_CODE"/>
+			<result property="goodsCategory" column="GOODS_CATEGORY_SUB"/>
+			<result property="goodsCategoryOrd" column="GOODS_CATEGORY_ORD"/>
+			<result property="goodsCategoryFix" column="GOODS_CATEGORY_FIX"/>
+		</association>
+	</resultMap>
+	<resultMap id="goodsInfoView" extends="goodsInfoList" class="Vo\GoodsInfoVo">
+	</resultMap>
+	<resultMap id="goodsStatus" class="Vo\DashBoardStatusVo">
+		<result property="goodsCnt" column="GOODS_CNT"/>
+		<result property="goodsSaleCnt" column="GOODS_SALE_CNT"/>
+		<result property="goodsOutStockCnt" column="GOODS_OUT_STOCK_CNT"/>
+		<result property="goodsOutStock10Cnt" column="GOODS_OUT_STOCK10_CNT"/>
+		<result property="goodsUnSaleCnt" column="GOODS_UN_SALE_CNT"/>
+		<result property="goodsTotalCnt" column="GOODS_TOTAL_CNT"/>
+		<result property="goodsQnaCnt" column="GOODS_QNA_CNT"/>
+	</resultMap>
+	<resultMap id="goodsCategoryList" class="Vo\GoodsCategoryVo">
+		<result property="mallId" column="MALL_ID"/>
+		<result property="cateType" column="CATE_TYPE"/>
+		<result property="isMaster" column="IS_MASTER"/>
+		<result property="goodsCode" column="GOODS_CODE"/>
+		<result property="goodsCategory" column="GOODS_CATEGORY"/>
+		<result property="goodsCategoryOrd" column="GOODS_CATEGORY_ORD"/>
+		<result property="goodsCategoryFix" column="GOODS_CATEGORY_FIX"/>
+	</resultMap>
+	<resultMap id="treeList" class="Vo\TreeVo">
+		<result property="mallId" column="MALL_ID"/>
+		<result property="id" column="ID"/>
+		<result property="value" column="VALUE"/>
+		<result property="cnt" column="CNT"/>
+	</resultMap>
+	<sql id="select-list"><![CDATA[
+SELECT
+	G.MALL_ID,
+	G.GOODS_CODE,
+	G.GOODS_CATEGORY,
+	G.GOODS_CATEGORY_MST,
+	G.GOODS_DISPLAY_FL,
+	G.GOODS_DISPLAY_MOBILE_FL,
+	G.GOODS_SELL_FL,
+	G.GOODS_SELL_MOBILE_FL,
+	G.GOODS_SELL_TYPE,
+	G.SELLER_MEM_NO,
+	G.SELLER_MEM_NM,
+	G.USE_COMMISSION,
+	G.COMMISSION,
+	G.GOODS_CD,
+	G.GOODS_NM,
+	G.GOODS_NM_LOCALE,
+	G.GOODS_SEARCH_WORD,
+	G.GOODS_OPEN_DT,
+	G.GOODS_CLOSE_DT,
+	G.GOODS_STATE,
+	G.GOODS_COLOR,
+	G.BRAND_CD,
+	G.MAKER_NM,
+	G.ORIGIN_NM,
+	G.HSCODE,
+	G.HSCODE_LOCALE,
+	G.MAKE_YMD,
+	G.LAUNCH_YMD,
+	G.EFFECTIVE_START_YMD,
+	G.EFFECTIVE_END_YMD,
+	G.GOODS_PERMISSION,
+	G.MEMBER_GROUP_NO,
+	G.ONLY_ADULT_FL,
+	G.ONLY_ADULT_DISPLAY_FL,
+	G.GOODS_ACCESS,
+	G.ADD_INFO,
+	G.ADDED_FIELD01,
+	G.ADDED_FIELD02,
+	G.ADDED_FIELD03,
+	G.ADDED_FIELD04,
+	G.ADDED_FIELD05,
+	G.ADDED_FIELD06,
+	G.ADDED_FIELD07,
+	G.ADDED_FIELD08,
+	G.ADDED_FIELD09,
+	G.ADDED_FIELD10,
+	G.ADD_MUST_INFO,
+	G.TAX_PERCENT,
+	G.GOODS_WEIGHT,
+	G.STOCK_FL,
+	G.STOCK_CNT,
+	G.SALES_UNIT,
+	G.SOLD_OUT_FL,
+	G.MIN_ORDER_CNT,
+	G.MAX_ORDER_CNT,
+	G.SALES_OPEN_DATE,
+	G.SALES_CLOSE_DATE,
+	G.MILEAGE_FL,
+	G.MILEAGE_GOODS,
+	G.MILEAGE_GOODS_UNIT,
+	G.MILEAGE_GROUP,
+	G.GOODS_DISCOUNT_FL,
+	G.FIXED_GOODS_DISCOUNT,
+	G.GOODS_DISCOUNT_GROUP,
+	G.GOODS_DISCOUNT_GROUP_MEMBER_INFO,
+	G.EXCEPT_BENEFIT,
+	G.EXCEPT_BENEFIT_GROUP,
+	G.EXCEPT_BENEFIT_GROUP_INFO,
+	G.FIXED_PRICE,
+	G.COST_PRICE,
+	G.GOODS_PRICE,
+	G.GOODS_PRICE_STRING,
+	G.GOODS_PRICE_FL,
+	G.GOODS_PRICE_GROUP,
+	G.GOODS_PRICE_UNIT,
+	G.GOODS_PRICE_TYPE,
+	G.CONNERSTONE_PRICE,
+	G.LABOR_COST_PRICE,
+	G.LABOR_METAL_TYPE,
+	G.LABOR_METAL_LOWER_TYPE,
+	G.DELIVERY_NATION,
+	G.DELIVERY_PACKING_RULE,
+	G.DELIVERY_PACKING_PRICE,
+	G.OPTION_FL,
+	G.OPTION_DISPLAY_FL,
+	G.OPTION_DISPLAY_IMAGE,
+	G.OPTIONS_NAME,
+	G.OPTIONS,
+	G.OPTIONS_EXT_FL,
+	G.OPTIONS_EXT_NAME,
+	G.OPTIONS_EXT,
+	G.OPTION_TEXT_FL,
+	G.OPTIONS_TEXT_NAME,
+	G.OPTIONS_TEXT,
+	G.OPTION_REF_FL,
+	G.OPTIONS_REF_NAME,
+	G.OPTIONS_REF,
+	G.GOODS_IMAGE_MASTER,
+	G.GOODS_IMAGE_ADDED,
+	G.SHORT_DESCRIPTION,
+	G.SHORT_DESCRIPTION_LOCALE,
+	G.EVENT_DESCRIPTION,
+	G.EVENT_DESCRIPTION_LOCALE,
+	G.GOODS_DESCRIPTION,
+	G.GOODS_DESCRIPTION_LOCALE,
+	G.GOODS_DESCRIPTION_SAME_FL,
+	G.GOODS_DESCRIPTION_MOBILE,
+	G.GOODS_DESCRIPTION_MOBILE_LOCALE,
+	G.DELIVERY_FL,
+	G.DELIVERY_OPTION,
+	G.REF_GOODS_FL,
+	G.REF_GOODS,
+	G.GOODS_MALL_SEARCH_OPTION,
+	G.GOODS_SEARCH_OPTION,
+	G.GOODS_ATTR,
+	G.GOODS_ICON_OPEN_DATE,
+	G.GOODS_ICON_CLOSE_DATE,
+	G.GOODS_ICON_TIME,
+	G.GOODS_ICON_FIX,
+	G.EXTERNAL_VIDEO_FL,
+	G.EXTERNAL_VIDEO_URL,
+	G.EXTERNAL_VIDEO_WIDTH,
+	G.EXTERNAL_VIDEO_HEIGHT,
+	G.DETAIL_INFO_DELIVERY_FL,
+	G.DETAIL_INFO_DELIVERY,
+	G.DETAIL_INFO_AS_FL,
+	G.DETAIL_INFO_AS,
+	G.DETAIL_INFO_REFUND_FL,
+	G.DETAIL_INFO_REFUND,
+	G.DETAIL_INFO_EXCHANGE_FL,
+	G.DETAIL_INFO_EXCHANGE,
+	G.SEO_TAG_FL,
+	G.SEO_TAG,
+	G.NAVER_FL,
+	G.NAVER_OPTIONS,
+	G.FACEBOOK_FL,
+	G.FACEBOOK_OPTIONS,
+	G.MEMO,
+	G.REVIEW_CNT,
+	G.REVIEW_POINT,
+	G.REVIEW_DATE,
+	G.QNA_CNT,
+	G.QNA_UNANSWERED_CNT,
+	G.QNA_DATE,
+	G.IS_HIDDEN_FL,
+	G.SCM_REG_DATE,
+	G.SCM_MOD_DATE,
+	G.SCM_UNAPPLY_CNT,
+	G.SCM_APPLY_CNT,
+	G.DELIVERY_DETAIL,
+	G.REG_DATE,
+	G.MOD_DATE
+	]]></sql>
+	<sql id="list-where">
+		<where>
+			<if test="$mallId != ''">
+				AND G.MALL_ID = #{mallId}
+				AND G.GOODS_CODE NOT LIKE 'TMP%'
+			</if>
+			<if test="$isHiddenFl != ''">
+				AND G.IS_HIDDEN_FL = #{isHiddenFl}
+			</if>
+			<if test="$goodsDisplayFl != ''">
+				AND G.GOODS_DISPLAY_FL = #{goodsDisplayFl}
+			</if>
+			<if test="$goodsSellFl != ''">
+				AND G.GOODS_SELL_FL = #{goodsSellFl}
+			</if>
+			<if test="$goodsSellType != ''">
+				AND G.GOODS_SELL_TYPE = #{goodsSellType}
+			</if>
+			<if test="$stockFl != ''">
+				AND G.STOCK_FL = #{stockFl}
+			</if>
+			<if test="$soldOutFl != ''">
+				AND G.SOLD_OUT_FL = #{soldOutFl}
+			</if>
+			<if test="$optionFl != ''">
+				AND G.OPTION_FL = #{optionFl}
+			</if>
+			<if test="$optionTextFl != ''">
+				AND G.OPTION_TEXT_FL = #{optionTextFl}
+			</if>
+			<if test="$optionRefFl != ''">
+				AND G.OPTION_REF_FL = #{optionRefFl}
+			</if>
+			<if test="$displayType != ''">
+				<choose>
+					<when test="$displayType == 'web'">
+						AND G.GOODS_DISPLAY_FL = 'Y'
+					</when>
+					<when test="$displayType == 'app'">
+						AND G.GOODS_DISPLAY_MOBILE_FL = 'Y'
+					</when>
+					<otherwise>
+						AND (G.GOODS_DISPLAY_FL = 'Y' OR
+						G.GOODS_DISPLAY_MOBILE_FL = 'Y')
+					</otherwise>
+				</choose>
+				AND NOW() BETWEEN G.GOODS_OPEN_DT AND IF(YEAR(G.GOODS_CLOSE_DT) = 0,
+				'2099-12-31', DATE_ADD(G.GOODS_CLOSE_DT, INTERVAL 1 DAY))
+				AND
+				G.IS_HIDDEN_FL = 'N'
+			</if>
+
+			<if test="!empty($goodsCodes)">
+				AND G.GOODS_CODE IN (
+				<foreach item="item" collection="goodsCodes" separator=" , ">
+					#{item}
+				</foreach>
+				)
+			</if>
+			<if test="!empty($couponNo)">
+				AND (
+					(SELECT SCM_ISSUE_TYPE FROM kbm_coupon WHERE MALL_ID = #{mallId} AND COUPON_NO = #{couponNo}) NOT IN ('YN','YY') OR
+					G.SELLER_MEM_NO IN (
+						SELECT SCM_NO FROM kbm_coupon WHERE MALL_ID = #{mallId} AND COUPON_NO = #{couponNo} AND SCM_ISSUE_TYPE IN ('YN','YY')
+					)
+				)
+				AND (
+				(
+				G.GOODS_CODE IN (
+				SELECT REF_CODE FROM
+				kbm_coupon_ref WHERE
+				MALL_ID = #{mallId} AND
+				COUPON_NO = #{couponNo}
+				AND
+				REF_TYPE = 'G' AND REF_EXCEPT = 'N'
+				) AND
+				G.GOODS_CODE NOT IN (
+				SELECT REF_CODE FROM kbm_coupon_ref WHERE
+				MALL_ID = #{mallId} AND
+				COUPON_NO = #{couponNo} AND
+				REF_TYPE = 'G' AND
+				REF_EXCEPT = 'Y'
+				)
+				) OR
+				(
+				(
+				'Y' = (SELECT
+				COUPON_APPLY_PRODUCT_TYPE FROM kbm_coupon WHERE
+				MALL_ID = #{mallId} AND COUPON_NO = #{couponNo} AND COUPON_USE_TYPE = 'G') OR
+				G.GOODS_CODE IN (
+				SELECT GOODS_CODE FROM
+				kbm_goods_category
+				WHERE
+				MALL_ID = #{mallId} AND
+				CATE_TYPE IN ('B','C') AND
+				GOODS_CATEGORY IN (
+				SELECT
+				REF_CODE FROM kbm_coupon_ref WHERE
+				MALL_ID
+				= #{mallId} AND
+				COUPON_NO = #{couponNo} AND
+				REF_TYPE IN ('B','C') AND
+				REF_EXCEPT = 'N'
+				)
+				)
+				) AND
+				G.GOODS_CODE NOT IN (
+				SELECT GOODS_CODE FROM
+				kbm_goods_category WHERE
+				MALL_ID = #{mallId} AND
+				CATE_TYPE IN
+				('B','C') AND
+				GOODS_CATEGORY IN (
+				SELECT REF_CODE FROM
+				kbm_coupon_ref
+				WHERE
+				MALL_ID = #{mallId} AND
+				COUPON_NO = #{couponNo} AND
+				REF_TYPE IN
+				('B','C') AND REF_EXCEPT = 'Y'
+				)
+				)
+				)
+				)
+			</if>
+			<if test="$query != ''">
+				<choose>
+					<when test="$so == 'CD'">
+						AND G.GOODS_CODE LIKE CONCAT('%',#{query},'%')
+					</when>
+					<when test="$so == 'GN'">
+						AND G.GOODS_NM LIKE CONCAT('%',#{query},'%')
+					</when>
+					<when test="$so == 'BN'">
+						AND G.BRAND_NM LIKE CONCAT('%',#{query},'%')
+					</when>
+					<when test="$so == 'MN'">
+						AND G.MAKER_NM LIKE CONCAT('%',#{query},'%')
+					</when>
+					<when test="$so == 'ON'">
+						AND G.ORIGIN_NM LIKE CONCAT('%',#{query},'%')
+					</when>
+					<when test="$so == 'SCM_MN'">
+						AND G.SELLER_MEM_NO IN (
+						SELECT SCM_NO FROM
+						kbm_scm_info WHERE
+						MALL_ID = #{mallId} AND
+						SCM_NM LIKE
+						CONCAT('%',REPLACE(#{query},' ','%'),'%')
+						)
+					</when>
+					<when test="$so == 'SCM_ID'">
+						AND G.SELLER_MEM_NO IN (
+						SELECT SCM_NO FROM
+						kbm_scm_info WHERE
+						MALL_ID = #{mallId} AND
+						SCM_ID LIKE
+						CONCAT('%',REPLACE(#{query},' ','%'),'%')
+						)
+					</when>
+					<when test="$so == 'SCM_NO'">
+						AND G.SELLER_MEM_NO IN (
+						SELECT SCM_NO FROM
+						kbm_scm_info WHERE
+						MALL_ID = #{mallId} AND
+						SCM_NO = #{query}
+						)
+					</when>
+					<when test="$so == 'goodsCd'">
+						AND G.GOODS_CD LIKE CONCAT('%',#{query},'%')
+					</when>
+					<when test="$so == 'shortDescription'">
+						AND G.SHORT_DESCRIPTION LIKE
+						CONCAT('%',#{query},'%')
+					</when>
+					<when test="$so == 'addedField01'">
+						AND G.ADDED_FIELD01 LIKE CONCAT('%',#{query},'%')
+					</when>
+					<when test="$so == 'addedField02'">
+						AND G.ADDED_FIELD02 LIKE CONCAT('%',#{query},'%')
+					</when>
+					<when test="$so == 'addedField03'">
+						AND G.ADDED_FIELD03 LIKE CONCAT('%',#{query},'%')
+					</when>
+					<when test="$so == 'addedField04'">
+						AND G.ADDED_FIELD04 LIKE CONCAT('%',#{query},'%')
+					</when>
+					<when test="$so == 'addedField05'">
+						AND G.ADDED_FIELD05 LIKE CONCAT('%',#{query},'%')
+					</when>
+					<when test="$so == 'addedField06'">
+						AND G.ADDED_FIELD06 LIKE CONCAT('%',#{query},'%')
+					</when>
+					<when test="$so == 'addedField07'">
+						AND G.ADDED_FIELD07 LIKE CONCAT('%',#{query},'%')
+					</when>
+					<when test="$so == 'addedField08'">
+						AND G.ADDED_FIELD08 LIKE CONCAT('%',#{query},'%')
+					</when>
+					<when test="$so == 'addedField09'">
+						AND G.ADDED_FIELD09 LIKE CONCAT('%',#{query},'%')
+					</when>
+					<when test="$so == 'addedField10'">
+						AND G.ADDED_FIELD10 LIKE CONCAT('%',#{query},'%')
+					</when>
+					<when test="$so == 'eventDescription'">
+						AND G.EVENT_DESCRIPTION LIKE
+						CONCAT('%',#{query},'%')
+					</when>
+					<when test="$so == 'goodsDescription'">
+						AND G.GOODS_DESCRIPTION LIKE
+						CONCAT('%',#{query},'%')
+					</when>
+					<when test="$so == 'goodsDescriptionMobile'">
+						AND G.GOODS_DESCRIPTION_MOBILE LIKE
+						CONCAT('%',#{query},'%')
+					</when>
+					<when test="$so == 'externalVideoVo'">
+						AND G.EXTERNAL_VIDEO_URL LIKE
+						CONCAT('%',#{query},'%')
+					</when>
+					<when test="$so == 'detailInfoExchange'">
+						AND G.DETAIL_INFO_EXCHANGE LIKE
+						CONCAT('%',#{query},'%')
+					</when>
+					<when test="$so == 'detailInfoAs'">
+						AND G.DETAIL_INFO_AS LIKE CONCAT('%',#{query},'%')
+					</when>
+					<when test="$so == 'memo'">
+						AND G.MEMO LIKE CONCAT('%',#{query},'%')
+					</when>
+					<otherwise>
+						AND (
+						REPLACE(CONCAT(G.GOODS_CODE, G.GOODS_SEARCH_WORD),'','') LIKE CONCAT('%',REPLACE(#{query},' ','%'),'%') OR
+						(
+						<foreach item="item" collection="queryLikeList" separator=" AND ">
+							G.GOODS_SEARCH_WORD LIKE CONCAT('%',#{item},'%')
+						</foreach>
+						)
+						)
+					</otherwise>
+				</choose>
+			</if>
+			<if test="!empty($queryList0)">
+				AND (
+				<foreach item="item" collection="queryList0" separator=" OR ">
+					FIND_IN_SET(#{item} , G.GOODS_ATTR)
+				</foreach>
+				)
+			</if>
+			<if test="!empty($queryList1)">
+				AND (
+				<foreach item="item" collection="queryList1" separator=" OR ">
+					FIND_IN_SET(#{item} , G.GOODS_ATTR)
+				</foreach>
+				)
+			</if>
+			<if test="!empty($queryList2)">
+				AND (
+				<foreach item="item" collection="queryList2" separator=" OR ">
+					FIND_IN_SET(#{item} , G.GOODS_ATTR)
+				</foreach>
+				)
+			</if>
+			<if test="!empty($queryList3)">
+				AND (
+				<foreach item="item" collection="queryList3" separator=" OR ">
+					FIND_IN_SET(#{item} , G.GOODS_ATTR)
+				</foreach>
+				)
+			</if>
+			<if test="!empty($queryList4)">
+				AND (
+				<foreach item="item" collection="queryList4" separator=" OR ">
+					FIND_IN_SET(#{item} , G.GOODS_ATTR)
+				</foreach>
+				)
+			</if>
+			<if test="!empty($queryList5)">
+				AND (
+				<foreach item="item" collection="queryList5" separator=" OR ">
+					FIND_IN_SET(#{item} , G.GOODS_ATTR)
+				</foreach>
+				)
+			</if>
+			<if test="!empty($queryList6)">
+				AND (
+				<foreach item="item" collection="queryList6" separator=" OR ">
+					FIND_IN_SET(#{item} , G.GOODS_ATTR)
+				</foreach>
+				)
+			</if>
+			<if test="!empty($queryList7)">
+				AND (
+				<foreach item="item" collection="queryList7" separator=" OR ">
+					FIND_IN_SET(#{item} , G.GOODS_ATTR)
+				</foreach>
+				)
+			</if>
+			<if test="!empty($queryList8)">
+				AND (
+				<foreach item="item" collection="queryList8" separator=" OR ">
+					FIND_IN_SET(#{item} , G.GOODS_ATTR)
+				</foreach>
+				)
+			</if>
+			<if test="!empty($queryList9)">
+				AND (
+				<foreach item="item" collection="queryList9" separator=" OR ">
+					FIND_IN_SET(#{item} , G.GOODS_ATTR)
+				</foreach>
+				)
+			</if>
+			<if test="!empty($queryList10)">
+				AND (
+				<foreach item="item" collection="queryList10" separator=" OR ">
+					FIND_IN_SET(#{item} , G.GOODS_ATTR)
+				</foreach>
+				)
+			</if>
+			<if test="!empty($queryList11)">
+				AND (
+				<foreach item="item" collection="queryList11" separator=" OR ">
+					FIND_IN_SET(#{item} , G.GOODS_ATTR)
+				</foreach>
+				)
+			</if>
+			<if test="!empty($queryList12)">
+				AND (
+				<foreach item="item" collection="queryList12" separator=" OR ">
+					FIND_IN_SET(#{item} , G.GOODS_ATTR)
+				</foreach>
+				)
+			</if>
+			<if test="!empty($queryList13)">
+				AND (
+				<foreach item="item" collection="queryList13" separator=" OR ">
+					FIND_IN_SET(#{item} , G.GOODS_ATTR)
+				</foreach>
+				)
+			</if>
+			<if test="!empty($queryList14)">
+				AND (
+				<foreach item="item" collection="queryList14" separator=" OR ">
+					FIND_IN_SET(#{item} , G.GOODS_ATTR)
+				</foreach>
+				)
+			</if>
+			<if test="!empty($queryList15)">
+				AND (
+				<foreach item="item" collection="queryList15" separator=" OR ">
+					FIND_IN_SET(#{item} , G.GOODS_ATTR)
+				</foreach>
+				)
+			</if>
+			<if test="$goodsCategory != ''">
+				AND (G.MALL_ID, G.GOODS_CODE) IN
+				( SELECT MALL_ID,
+				GOODS_CODE FROM kbm_goods_category WHERE MALL_ID = #{mallId} AND
+				CATE_TYPE = 'C' AND GOODS_CATEGORY = #{goodsCategory}
+				)
+			</if>
+			<if test="$displayCategory != ''">
+				AND C.GOODS_CATEGORY = #{displayCategory}
+			</if>
+			<if test="!empty($goodsCategorys)">
+				AND (G.MALL_ID, G.GOODS_CODE) IN
+				(
+				SELECT MALL_ID, GOODS_CODE FROM
+				kbm_goods_category WHERE MALL_ID = #{mallId} AND CATE_TYPE = 'C' AND
+				GOODS_CATEGORY IN (
+				<foreach item="item" collection="goodsCategorys" separator=" , ">
+					#{item}
+				</foreach>
+				)
+				)
+			</if>
+			<if test="$brandCd != ''">
+				AND (
+				G.BRAND_CD = #{brandCd} OR
+				(G.MALL_ID, G.GOODS_CODE) IN
+				( SELECT MALL_ID,
+				GOODS_CODE FROM kbm_goods_category WHERE MALL_ID = #{mallId} AND
+				CATE_TYPE = 'B' AND GOODS_CATEGORY = #{brandCd}
+				))
+			</if>
+
+			<if test="!empty($brandCds)">
+				AND (G.MALL_ID, G.GOODS_CODE) IN
+				(
+				SELECT MALL_ID, GOODS_CODE FROM
+				kbm_goods_category WHERE MALL_ID = #{mallId} AND CATE_TYPE = 'B' AND
+				GOODS_CATEGORY IN (
+				<foreach item="item" collection="brandCds" separator=" , ">
+					#{item}
+				</foreach>
+				)
+				)
+			</if>
+
+			<if test="!empty($goodsColors)">
+				AND (G.MALL_ID, G.GOODS_CODE) IN
+				(
+				SELECT MALL_ID, GOODS_CODE FROM
+				kbm_goods_category WHERE MALL_ID = #{mallId} AND CATE_TYPE = 'H' AND
+				GOODS_CATEGORY IN (
+				<foreach item="item" collection="goodsColors" separator=" , ">
+					#{item}
+				</foreach>
+				)
+				)
+			</if>
+			<if test="!empty($goodsSearchOptions)">
+				AND (
+				<foreach item="item" collection="goodsSearchOptions" separator=" OR ">
+					FIND_IN_SET(#{item} , G.GOODS_SEARCH_OPTION)
+				</foreach>
+				)
+			</if>
+			<if test="!empty($goodsPricesRange)">
+				AND (
+				<foreach item="item" collection="goodsPricesRange" separator=" OR ">
+					G.GOODS_PRICE BETWEEN #{item.from} AND #{item.to}
+				</foreach>
+				)
+			</if>
+			<if test="!empty($goodsIconTimes)">
+				AND (G.MALL_ID, G.GOODS_CODE) IN
+				( SELECT MALL_ID, GOODS_CODE FROM
+				kbm_goods_category WHERE MALL_ID = #{mallId} AND CATE_TYPE = 'T' AND
+				GOODS_CATEGORY IN (
+				<foreach item="item" collection="goodsIconTimes" separator=" , ">
+					#{item}
+				</foreach>
+				)
+				)
+			</if>
+			<if test="!empty($goodsIconFixs)">
+				AND (G.MALL_ID, G.GOODS_CODE) IN
+				( SELECT MALL_ID, GOODS_CODE FROM
+				kbm_goods_category WHERE MALL_ID = #{mallId} AND CATE_TYPE = 'F' AND
+				GOODS_CATEGORY IN (
+				<foreach item="item" collection="goodsIconFixs" separator=" , ">
+					#{item}
+				</foreach>
+				)
+				)
+			</if>
+			<if test="$goodsColor != ''">
+				AND FIND_IN_SET(#{goodsColor} , G.GOODS_COLOR)
+			</if>
+			<if test="$goodsSearchOption != ''">
+				AND FIND_IN_SET(#{goodsSearchOption} , G.GOODS_SEARCH_OPTION)
+			</if>
+			<if test="$scmNo != ''">
+				AND G.SELLER_MEM_NO = #{scmNo}
+			</if>
+			<if test="!empty($scmNos)">
+				AND G.SELLER_MEM_NO IN (
+				<foreach item="item" collection="scmNos" separator=" , ">
+					#{item}
+				</foreach>
+				)
+			</if>
+
+			<if test="$goodsIconTime != ''">
+				AND FIND_IN_SET(#{goodsIconTime} , G.GOODS_ICON_TIME)
+			</if>
+			<if test="$goodsIconFix != ''">
+				AND FIND_IN_SET(#{goodsIconFix} , G.GOODS_ICON_FIX)
+			</if>
+			<if test="$goodsState != ''">
+				AND G.GOODS_STATE = #{goodsState}
+			</if>
+			<if test="$taxPercent != ''">
+				AND G.TAX_PERCENT = #{taxPercent}
+			</if>
+			<if test="$externalVideoFl != ''">
+				AND G.EXTERNAL_VIDEO_FL = #{externalVideoFl}
+			</if>
+			<if test="$detailInfoExchangeFl != ''">
+				AND G.DETAIL_INFO_EXCHANGE_FL = #{detailInfoExchangeFl}
+			</if>
+			<if test="$detailInfoAsFl != ''">
+				AND G.DETAIL_INFO_AS_FL = #{detailInfoAsFl}
+			</if>
+			<if test="$deliveryFl != ''">
+				AND G.DELIVERY_FL = #{deliveryFl}
+			</if>
+			<if test="$deliveryOption != ''">
+				AND G.DELIVERY_OPTION = #{deliveryOption}
+			</if>
+			<if test="$seoTagFl != ''">
+				AND G.SEO_TAG_FL = #{seoTagFl}
+			</if>
+			<if test="$naverFl != ''">
+				AND G.NAVER_FL = #{naverFl}
+			</if>
+			<if test="$facebookFl != ''">
+				AND G.FACEBOOK_FL = #{facebookFl}
+			</if>
+			<if test="$memNo GT 0">
+				AND GOODS_CODE IN (
+				SELECT GOODS_CODE FROM
+				kbm_order_info_item WHERE
+				MALL_ID = #{mallId} AND
+				ORDER_CD IN (
+				SELECT
+				ORDER_CD FROM kbm_order_info WHERE
+				MALL_ID = #{mallId} AND
+				MEM_NO = #{memNo} AND
+				REG_DATE BETWEEN DATE_SUB(NOW(), INTERVAL 1 YEAR) AND
+				NOW()
+				)
+				)
+			</if>
+			<if test="$dateStart != ''">
+				<choose>
+					<when test="$dateType == 'MOD_DT'">
+						AND G.MOD_DATE BETWEEN #{dateStart} AND NOW()
+					</when>
+					<when test="$dateType == 'makeYmd'">
+						AND G.MAKE_YMD BETWEEN #{dateStart} AND NOW()
+					</when>
+					<when test="$dateType == 'launchYmd'">
+						AND G.LAUNCH_YMD BETWEEN #{dateStart} AND NOW()
+					</when>
+					<when test="$dateType == 'goodsOpenDt'">
+						AND G.GOODS_OPEN_DT BETWEEN #{dateStart} AND NOW()
+					</when>
+					<when test="$dateType == 'goodsCloseDt'">
+						AND G.GOODS_CLOSE_DT BETWEEN #{dateStart} AND NOW()
+					</when>
+					<when test="$dateType == 'goodsIconOpenDate'">
+						AND G.GOODS_ICON_OPEN_DATE BETWEEN #{dateStart} AND
+						NOW()
+					</when>
+					<when test="$dateType == 'goodsIconCloseDate'">
+						AND G.GOODS_ICON_CLOSE_DATE BETWEEN #{dateStart}
+						AND NOW()
+					</when>
+					<when test="$dateType == 'effectiveStartYmd'">
+						AND G.EFFECTIVE_START_YMD BETWEEN #{dateStart} AND
+						NOW()
+					</when>
+					<when test="$dateType == 'effectiveEndYmd'">
+						AND G.EFFECTIVE_END_YMD BETWEEN #{dateStart} AND
+						NOW()
+					</when>
+					<otherwise>
+						AND G.REG_DATE BETWEEN #{dateStart} AND NOW()
+					</otherwise>
+				</choose>
+			</if>
+			<if test="$dateEnd != ''">
+				<choose>
+					<when test="$dateType == 'MOD_DT'">
+						AND G.MOD_DATE BETWEEN '2010-01-01' AND
+						DATE_ADD(#{dateEnd}, INTERVAL 1 DAY)
+					</when>
+					<when test="$dateType == 'makeYmd'">
+						AND G.MAKE_YMD BETWEEN '2010-01-01' AND
+						DATE_ADD(#{dateEnd}, INTERVAL 1 DAY)
+					</when>
+					<when test="$dateType == 'launchYmd'">
+						AND G.LAUNCH_YMD BETWEEN '2010-01-01' AND
+						DATE_ADD(#{dateEnd}, INTERVAL 1 DAY)
+					</when>
+					<when test="$dateType == 'goodsOpenDt'">
+						AND G.GOODS_OPEN_DT BETWEEN '2010-01-01' AND
+						DATE_ADD(#{dateEnd}, INTERVAL 1 DAY)
+					</when>
+					<when test="$dateType == 'goodsCloseDt'">
+						AND G.GOODS_CLOSE_DT BETWEEN '2010-01-01' AND
+						DATE_ADD(#{dateEnd}, INTERVAL 1 DAY)
+					</when>
+					<when test="$dateType == 'goodsIconOpenDate'">
+						AND G.GOODS_ICON_OPEN_DATE BETWEEN '2010-01-01' AND
+						DATE_ADD(#{dateEnd}, INTERVAL 1 DAY)
+					</when>
+					<when test="$dateType == 'goodsIconCloseDate'">
+						AND G.GOODS_ICON_CLOSE_DATE BETWEEN '2010-01-01'
+						AND DATE_ADD(#{dateEnd}, INTERVAL 1 DAY)
+					</when>
+					<when test="$dateType == 'effectiveStartYmd'">
+						AND G.EFFECTIVE_START_YMD BETWEEN '2010-01-01' AND
+						DATE_ADD(#{dateEnd}, INTERVAL 1 DAY)
+					</when>
+					<when test="$dateType == 'effectiveEndYmd'">
+						AND G.EFFECTIVE_END_YMD BETWEEN '2010-01-01' AND
+						DATE_ADD(#{dateEnd}, INTERVAL 1 DAY)
+					</when>
+					<otherwise>
+						AND G.REG_DATE BETWEEN '2010-01-01' AND
+						DATE_ADD(#{dateEnd}, INTERVAL 1 DAY)
+					</otherwise>
+				</choose>
+			</if>
+		</where>
+	</sql>
+	<sql id="list-orderby">
+<![CDATA[
+	ORDER BY
+]]>
+		<choose>
+			<when test="$orderBy == 'RANDOM'">
+				RAND()
+			</when>
+			<when test="$orderBy == 'RD_DESC'">
+				G.REG_DATE DESC
+			</when>
+			<when test="$orderBy == 'RD_ASC'">
+				G.REG_DATE ASC
+			</when>
+			<when test="$orderBy == 'MD_DESC'">
+				G.MOD_DATE DESC
+			</when>
+			<when test="$orderBy == 'MD_ASC'">
+				G.MOD_DATE ASC
+			</when>
+			<when test="$orderBy == 'CD_DESC'">
+				G.GOODS_CODE DESC
+			</when>
+			<when test="$orderBy == 'CD_ASC'">
+				G.GOODS_CODE ASC
+			</when>
+			<when test="$orderBy == 'GN_DESC'">
+				G.GOODS_NM DESC, G.MOD_DATE DESC
+			</when>
+			<when test="$orderBy == 'GN_ASC'">
+				G.GOODS_NM ASC, G.MOD_DATE DESC
+			</when>
+			<when test="$orderBy == 'BN_DESC'">
+				G.BRAND_NM DESC, G.MOD_DATE DESC
+			</when>
+			<when test="$orderBy == 'BN_ASC'">
+				G.BRAND_NM ASC, G.MOD_DATE DESC
+			</when>
+			<when test="$orderBy == 'GP_DESC'">
+				G.GOODS_PRICE DESC, G.MOD_DATE DESC
+			</when>
+			<when test="$orderBy == 'GP_ASC'">
+				G.GOODS_PRICE ASC, G.MOD_DATE DESC
+			</when>
+			<when test="$orderBy == 'MN_DESC'">
+				G.MAKER_NM DESC, G.MOD_DATE DESC
+			</when>
+			<when test="$orderBy == 'MN_ASC'">
+				G.MAKER_NM ASC, G.MOD_DATE DESC
+			</when>
+			<when test="$orderBy == 'ON_DESC'">
+				G.ORIGIN_NM DESC, G.MOD_DATE DESC
+			</when>
+			<when test="$orderBy == 'ON_ASC'">
+				G.ORIGIN_NM ASC, G.MOD_DATE DESC
+			</when>
+			<when test="$orderBy == 'REC'">
+				G.REVIEW_POINT DESC, G.MOD_DATE DESC
+			</when>
+			<when test="$orderBy == 'REVP'">
+				G.REVIEW_POINT DESC, G.MOD_DATE DESC
+			</when>
+			<when test="$orderBy == 'SALE'">
+				G.REVIEW_CNT DESC, G.MOD_DATE DESC
+			</when>
+			<when test="$orderBy == 'LPRICE'">
+				G.GOODS_PRICE ASC, G.MOD_DATE DESC
+			</when>
+			<when test="$orderBy == 'HPRICE'">
+				G.GOODS_PRICE DESC, G.MOD_DATE DESC
+			</when>
+			<when test="$orderBy == 'CATE_ASC'">
+				C.GOODS_CATEGORY_ORD ASC, G.MOD_DATE DESC
+			</when>
+			<when test="$orderBy == 'CATE_DESC'">
+				C.GOODS_CATEGORY_ORD DESC, G.MOD_DATE DESC
+			</when>
+			<when test="$orderBy == 'SCM_RD_DESC'">
+				G.SCM_REG_DATE DESC, G.MOD_DATE DESC
+			</when>
+			<when test="$orderBy == 'SCM_RD_ASC'">
+				G.SCM_REG_DATE ASC, G.MOD_DATE ASC
+			</when>
+			<when test="$orderBy == 'SCM_MD_DESC'">
+				G.SCM_MOD_DATE DESC, G.MOD_DATE DESC
+			</when>
+			<when test="$orderBy == 'SCM_MD_ASC'">
+				G.SCM_MOD_DATE ASC, G.MOD_DATE ASC
+			</when>
+			<when test="$orderBy == 'SCM_UNAPPCNT_DESC'">
+				G.SCM_UNAPPLY_CNT DESC, G.MOD_DATE DESC
+			</when>
+			<when test="$orderBy == 'SCM_UNAPPCNT_ASC'">
+				G.SCM_UNAPPLY_CNT ASC, G.MOD_DATE DESC
+			</when>
+			<when test="$orderBy == 'SCM_APPCNT_DESC'">
+				G.SCM_APPLY_CNT DESC, G.MOD_DATE DESC
+			</when>
+			<when test="$orderBy == 'SCM_APPCNT_ASC'">
+				G.SCM_APPLY_CNT ASC, G.MOD_DATE DESC
+			</when>
+			<when test="$orderBy == 'GS_DESC'">
+				(SELECT SUM(LOG_CNT) FROM kbm_goods_info_log_view L
+				WHERE L.MALL_ID =
+				G.MALL_ID AND L.GOODS_CODE = G.GOODS_CODE AND
+				L.LOG_TYPE = 'O' )
+				DESC,
+				G.MOD_DATE DESC
+			</when>
+			<when test="$orderBy == 'GS_ASC'">
+				(SELECT SUM(LOG_CNT) FROM kbm_goods_info_log_view L
+				WHERE L.MALL_ID =
+				G.MALL_ID AND L.GOODS_CODE = G.GOODS_CODE AND
+				L.LOG_TYPE = 'O' )
+				ASC, G.MOD_DATE DESC
+			</when>
+			<when test="$orderBy == 'GV_DESC'">
+				(SELECT SUM(LOG_CNT) FROM kbm_goods_info_log_view L
+				WHERE L.MALL_ID =
+				G.MALL_ID AND L.GOODS_CODE = G.GOODS_CODE AND
+				L.LOG_TYPE = 'O' )
+				DESC, G.MOD_DATE DESC
+			</when>
+			<when test="$orderBy == 'GV_ASC'">
+				(SELECT SUM(LOG_CNT) FROM kbm_goods_info_log_view L
+				WHERE L.MALL_ID =
+				G.MALL_ID AND L.GOODS_CODE = G.GOODS_CODE AND
+				L.LOG_TYPE = 'V' )
+				ASC, G.MOD_DATE DESC
+			</when>
+			<when test="$orderBy == 'REC_ASC'">
+				<if test="$goodsCategory NE '' OR $brandCd NE '' OR $goodsSearchOption NE '' OR $displayCategory NE ''">
+					IFNULL((SELECT IF(GOODS_CATEGORY_FIX = 'Y',
+					GOODS_CATEGORY_ORD - 1000,
+					GOODS_CATEGORY_ORD) FROM
+					kbm_goods_category L WHERE L.MALL_ID = G.MALL_ID AND L.GOODS_CODE = G.GOODS_CODE
+					<if test="$goodsSearchOption NE ''">
+						AND L.GOODS_CATEGORY = #{goodsSearchOption}
+					</if>
+					<if test="$goodsCategory NE ''">
+						AND L.GOODS_CATEGORY = #{goodsCategory}
+					</if>
+					<if test="$brandCd NE ''">
+						AND L.GOODS_CATEGORY = #{brandCd}
+					</if>
+					<if test="$goodsCategory EQ '' AND $brandCd EQ ''  AND $goodsSearchOption EQ ''">
+						AND L.GOODS_CATEGORY = #{displayCategory}
+					</if>
+					),10000) ASC,
+				</if>
+				<if test="$goodsCategory EQ '' AND $goodsCategory EQ '' AND $displayCategory EQ '' AND $goodsSearchOption EQ ''">
+					IF(GOODS_SORT_FIX = 'Y',
+					GOODS_SORT_ORD - 1000,
+					GOODS_SORT_ORD)
+					ASC,
+				</if>
+				G.MOD_DATE DESC
+			</when>
+			<when test="$orderBy == 'REC_DESC'">
+				<if test="$goodsCategory NE '' OR $goodsCategory NE '' OR $displayCategory NE ''">
+					(SELECT IF(GOODS_CATEGORY_FIX = 'Y',
+					GOODS_CATEGORY_ORD - 1000,
+					GOODS_CATEGORY_ORD) FROM
+					kbm_goods_category L WHERE L.MALL_ID = G.MALL_ID AND L.GOODS_CODE = G.GOODS_CODE
+					<if test="$goodsCategory NE ''">
+						AND L.GOODS_CATEGORY = #{goodsCategory}
+					</if>
+					<if test="$brandCd NE ''">
+						AND L.GOODS_CATEGORY = #{brandCd}
+					</if>
+					<if test="$goodsCategory EQ '' AND $brandCd EQ ''">
+						AND L.GOODS_CATEGORY = #{displayCategory}
+					</if>
+					) DESC,
+				</if>
+				<if test="$goodsCategory EQ '' AND $goodsCategory EQ '' AND $displayCategory EQ ''">
+					IF(GOODS_SORT_FIX = 'Y',
+					GOODS_SORT_ORD - 1000,
+					GOODS_SORT_ORD)
+					DESC,
+				</if>
+				G.MOD_DATE DESC
+			</when>
+			<otherwise>
+				<if test="$displayCategory != ''">
+					C.GOODS_CATEGORY_ORD ASC
+				</if>
+				<if test="$displayCategory == ''">
+					G.REG_DATE DESC
+				</if>
+			</otherwise>
+		</choose>
+	</sql>
+	<sql id="select-view"><![CDATA[
+SELECT
+	MALL_ID,
+	GOODS_CODE,
+	GOODS_CATEGORY,
+	GOODS_CATEGORY_MST,
+	GOODS_DISPLAY_FL,
+	GOODS_DISPLAY_MOBILE_FL,
+	GOODS_SELL_FL,
+	GOODS_SELL_MOBILE_FL,
+	GOODS_SELL_TYPE,
+	SELLER_MEM_NO,
+	SELLER_MEM_NM,
+	USE_COMMISSION,
+	COMMISSION,
+	GOODS_CD,
+	GOODS_NM,
+	GOODS_NM_LOCALE,
+	GOODS_SEARCH_WORD,
+	GOODS_OPEN_DT,
+	GOODS_CLOSE_DT,
+	GOODS_STATE,
+	GOODS_COLOR,
+	BRAND_CD,
+	MAKER_NM,
+	ORIGIN_NM,
+	HSCODE,
+	HSCODE_LOCALE,
+	MAKE_YMD,
+	LAUNCH_YMD,
+	EFFECTIVE_START_YMD,
+	EFFECTIVE_END_YMD,
+	GOODS_PERMISSION,
+	MEMBER_GROUP_NO,
+	ONLY_ADULT_FL,
+	ONLY_ADULT_DISPLAY_FL,
+	GOODS_ACCESS,
+	ADD_INFO,
+	ADDED_FIELD01,
+	ADDED_FIELD02,
+	ADDED_FIELD03,
+	ADDED_FIELD04,
+	ADDED_FIELD05,
+	ADDED_FIELD06,
+	ADDED_FIELD07,
+	ADDED_FIELD08,
+	ADDED_FIELD09,
+	ADDED_FIELD10,
+	ADD_MUST_INFO,
+	TAX_PERCENT,
+	GOODS_WEIGHT,
+	STOCK_FL,
+	STOCK_CNT,
+	SALES_UNIT,
+	SOLD_OUT_FL,
+	MIN_ORDER_CNT,
+	MAX_ORDER_CNT,
+	SALES_OPEN_DATE,
+	SALES_CLOSE_DATE,
+	MILEAGE_FL,
+	MILEAGE_GOODS,
+	MILEAGE_GOODS_UNIT,
+	MILEAGE_GROUP,
+	GOODS_DISCOUNT_FL,
+	FIXED_GOODS_DISCOUNT,
+	GOODS_DISCOUNT_GROUP,
+	GOODS_DISCOUNT_GROUP_MEMBER_INFO,
+	EXCEPT_BENEFIT,
+	EXCEPT_BENEFIT_GROUP,
+	EXCEPT_BENEFIT_GROUP_INFO,
+	FIXED_PRICE,
+	COST_PRICE,
+	GOODS_PRICE,
+	GOODS_PRICE_STRING,
+	GOODS_PRICE_FL,
+	GOODS_PRICE_GROUP,
+	GOODS_PRICE_UNIT,
+	GOODS_PRICE_TYPE,
+	CONNERSTONE_PRICE,
+	LABOR_COST_PRICE,
+	LABOR_METAL_TYPE,
+	LABOR_METAL_LOWER_TYPE,
+	DELIVERY_NATION,
+	DELIVERY_PACKING_RULE,
+	DELIVERY_PACKING_PRICE,
+	OPTION_FL,
+	OPTION_FILE,
+	OPTION_DISPLAY_FL,
+	OPTION_DISPLAY_IMAGE,
+	OPTIONS_NAME,
+	OPTIONS,
+	OPTIONS_EXT_FL,
+	OPTIONS_EXT_NAME,
+	OPTIONS_EXT,
+	OPTION_TEXT_FL,
+	OPTIONS_TEXT_NAME,
+	OPTIONS_TEXT,
+	OPTION_REF_FL,
+	OPTIONS_REF_NAME,
+	OPTIONS_REF,
+	OPTION_DATA,
+	GOODS_MALL_DATA,
+	GOODS_IMAGE_MASTER,
+	GOODS_IMAGE_ADDED,
+	SHORT_DESCRIPTION,
+	SHORT_DESCRIPTION_LOCALE,
+	EVENT_DESCRIPTION,
+	EVENT_DESCRIPTION_LOCALE,
+	GOODS_DESCRIPTION,
+	GOODS_DESCRIPTION_LOCALE,
+	GOODS_DESCRIPTION_SAME_FL,
+	GOODS_DESCRIPTION_MOBILE,
+	GOODS_DESCRIPTION_MOBILE_LOCALE,
+	DELIVERY_FL,
+	DELIVERY_OPTION,
+	REF_GOODS_FL,
+	REF_GOODS,
+	GOODS_MALL_SEARCH_OPTION,
+	GOODS_SEARCH_OPTION,
+	GOODS_ATTR,
+	GOODS_ICON_OPEN_DATE,
+	GOODS_ICON_CLOSE_DATE,
+	GOODS_ICON_TIME,
+	GOODS_ICON_FIX,
+	EXTERNAL_VIDEO_FL,
+	EXTERNAL_VIDEO_URL,
+	EXTERNAL_VIDEO_WIDTH,
+	EXTERNAL_VIDEO_HEIGHT,
+	DETAIL_INFO_DELIVERY_FL,
+	DETAIL_INFO_DELIVERY,
+	DETAIL_INFO_AS_FL,
+	DETAIL_INFO_AS,
+	DETAIL_INFO_REFUND_FL,
+	DETAIL_INFO_REFUND,
+	DETAIL_INFO_EXCHANGE_FL,
+	DETAIL_INFO_EXCHANGE,
+	SEO_TAG_FL,
+	SEO_TAG,
+	NAVER_FL,
+	NAVER_OPTIONS,
+	FACEBOOK_FL,
+	FACEBOOK_OPTIONS,
+	MEMO,
+	REVIEW_CNT,
+	REVIEW_POINT,
+	REVIEW_DATE,
+	QNA_CNT,
+	QNA_UNANSWERED_CNT,
+	QNA_DATE,
+	IS_HIDDEN_FL,
+	SCM_REG_DATE,
+	SCM_MOD_DATE,
+	SCM_UNAPPLY_CNT,
+	SCM_APPLY_CNT,
+	DELIVERY_DETAIL,
+	REG_DATE,
+	MOD_DATE
+	]]></sql>
+	<sql id="goods-info-cnt">
+		SELECT MALL_ID, GOODS_CODE FROM kbm_goods_info
+		<where>
+			MALL_ID = G.MALL_ID
+			AND IS_HIDDEN_FL = 'N'
+			<if test="$query != ''">
+				<choose>
+					<when test="$so == 'CD'">
+						AND GOODS_CODE LIKE CONCAT('%',#{query},'%')
+					</when>
+					<when test="$so == 'GN'">
+						AND GOODS_NM LIKE CONCAT('%',#{query},'%')
+					</when>
+					<otherwise>
+						AND CONCAT(GOODS_CODE, GOODS_NM) LIKE
+						CONCAT('%',REPLACE(#{query},'
+						','%'),'%')
+					</otherwise>
+				</choose>
+			</if>
+			<if test="$goodsColor != ''">
+				AND FIND_IN_SET(#{goodsColor} , GOODS_COLOR)
+			</if>
+			<if test="$goodsIconTime != ''">
+				AND FIND_IN_SET(#{goodsIconTime} , GOODS_ICON_TIME)
+			</if>
+			<if test="$goodsIconFix != ''">
+				AND FIND_IN_SET(#{goodsIconFix} , GOODS_ICON_FIX)
+			</if>
+			<if test="$dateStart != ''">
+				<choose>
+					<when test="$dateType == 'MOD_DT'">
+						AND MOD_DATE BETWEEN #{dateStart} AND NOW()
+					</when>
+					<otherwise>
+						AND REG_DATE BETWEEN #{dateStart} AND NOW()
+					</otherwise>
+				</choose>
+			</if>
+			<if test="$dateEnd != ''">
+				<choose>
+					<when test="$dateType == 'MOD_DT'">
+						AND MOD_DATE BETWEEN '2010-01-01' AND
+						DATE_ADD(#{dateEnd}, INTERVAL 1
+						DAY)
+					</when>
+					<otherwise>
+						AND REG_DATE BETWEEN '2010-01-01' AND
+						DATE_ADD(#{dateEnd}, INTERVAL 1
+						DAY)
+					</otherwise>
+				</choose>
+			</if>
+		</where>
+	</sql>
+	<delete id="categoryCntClean">
+<![CDATA[
+DELETE FROM kbm_goods_category
+]]>
+		<where>
+<![CDATA[
+	MALL_ID = #{mallId} AND
+	(
+		GOODS_CODE NOT IN (SELECT GOODS_CODE FROM kbm_goods_info WHERE MALL_ID = #{mallId} )
+		OR
+		(
+			GOODS_CATEGORY NOT IN (SELECT CATEGORY_ID FROM kbm_category WHERE MALL_ID = #{mallId} ) AND
+			GOODS_CATEGORY NOT IN (SELECT BRAND_ID FROM kbm_brand WHERE MALL_ID = #{mallId} ) AND
+			GOODS_CATEGORY NOT LIKE 'GOPT_%' AND
+			GOODS_CATEGORY != ''
+		)
+	)
+]]>
+		</where>
+	</delete>
+	<select id="categoryCntlist" resultMap="treeList">
+<![CDATA[
+SELECT
+	C.MALL_ID,
+	C.CATEGORY_ID AS ID,
+	C.CATEGORY_NM AS VALUE,
+	IFNULL(S.CNT, 0) AS CNT
+FROM kbm_category C LEFT JOIN kbm_goods_category_view S ON ( C.MALL_ID = S.MALL_ID AND C.CATEGORY_ID = S.GOODS_CATEGORY)
+WHERE C.MALL_ID = #{mallId}
+]]>
+	</select>
+	<select id="brandCntlist" resultMap="treeList">
+<![CDATA[
+SELECT
+	C.MALL_ID,
+	C.BRAND_ID AS ID,
+	C.BRAND_NM AS VALUE,
+	IFNULL(S.CNT, 0) AS CNT
+FROM kbm_brand C LEFT JOIN kbm_goods_category_view S ON ( C.MALL_ID = S.MALL_ID AND C.BRAND_ID = S.GOODS_CATEGORY)
+WHERE C.MALL_ID = #{mallId}
+]]>
+	</select>
+	<select id="iconColorTreelist" resultMap="treeList">
+<![CDATA[
+SELECT
+	C.MALL_ID,
+	C.GOODS_CATEGORY AS ID,
+	C.CATE_TYPE AS VALUE,
+	0 AS CNT
+FROM kbm_goods_category C WHERE
+	C.MALL_ID = #{mallId}
+	AND C.CATE_TYPE IN ('H','T','F')
+]]>
+		<if test="$scmNo GT 0">
+			AND C.GOODS_CODE IN (
+			SELECT GOODS_CODE FROM kbm_goods_info
+			WHERE MALL_ID
+			= #{mallId} AND SELLER_MEM_NO = #{scmNo}
+			)
+		</if>
+<![CDATA[
+GROUP BY
+	C.MALL_ID,
+	C.CATE_TYPE,
+	C.GOODS_CATEGORY
+]]>
+
+	</select>
+	<sql id="join-goods-info">
+		G.MALL_ID,
+		G.GOODS_CODE,
+		G.GOODS_CATEGORY,
+		G.GOODS_CATEGORY_MST,
+		G.GOODS_DISPLAY_FL,
+		G.GOODS_DISPLAY_MOBILE_FL,
+		G.GOODS_SELL_FL,
+		G.GOODS_SELL_MOBILE_FL,
+		G.GOODS_SELL_TYPE,
+		G.SELLER_MEM_NO,
+		G.SELLER_MEM_NM,
+		G.USE_COMMISSION,
+		G.COMMISSION,
+		G.GOODS_CD,
+		G.GOODS_NM,
+		G.GOODS_NM_LOCALE,
+		G.GOODS_SEARCH_WORD,
+		G.GOODS_OPEN_DT,
+		G.GOODS_CLOSE_DT,
+		G.GOODS_STATE,
+		G.GOODS_COLOR,
+		G.BRAND_CD,
+		(SELECT
+		BRAND_NM FROM kbm_brand B WHERE B.BRAND_ID = G.BRAND_CD AND B.MALL_ID
+		= G.MALL_ID) AS BRAND_NM,
+		G.MAKER_NM,
+		G.ORIGIN_NM,
+		G.HSCODE,
+		G.HSCODE_LOCALE,
+		G.MAKE_YMD,
+		G.LAUNCH_YMD,
+		G.EFFECTIVE_START_YMD,
+		G.EFFECTIVE_END_YMD,
+		G.GOODS_PERMISSION,
+		G.MEMBER_GROUP_NO,
+		G.ONLY_ADULT_FL,
+		G.ONLY_ADULT_DISPLAY_FL,
+		G.GOODS_ACCESS,
+		ADD_INFO,
+		ADDED_FIELD01,
+		ADDED_FIELD02,
+		ADDED_FIELD03,
+		ADDED_FIELD04,
+		ADDED_FIELD05,
+		ADDED_FIELD06,
+		ADDED_FIELD07,
+		ADDED_FIELD08,
+		ADDED_FIELD09,
+		ADDED_FIELD10,
+		ADD_MUST_INFO,
+		TAX_PERCENT,
+		GOODS_WEIGHT,
+		STOCK_FL,
+		STOCK_CNT,
+		SALES_UNIT,
+		SOLD_OUT_FL,
+		MIN_ORDER_CNT,
+		MAX_ORDER_CNT,
+		SALES_OPEN_DATE,
+		SALES_CLOSE_DATE,
+		MILEAGE_FL,
+		MILEAGE_GOODS,
+		MILEAGE_GOODS_UNIT,
+		MILEAGE_GROUP,
+		GOODS_DISCOUNT_FL,
+		FIXED_GOODS_DISCOUNT,
+		GOODS_DISCOUNT_GROUP,
+		GOODS_DISCOUNT_GROUP_MEMBER_INFO,
+		EXCEPT_BENEFIT,
+		EXCEPT_BENEFIT_GROUP,
+		EXCEPT_BENEFIT_GROUP_INFO,
+		FIXED_PRICE,
+		COST_PRICE,
+		GOODS_PRICE,
+		GOODS_PRICE_STRING,
+		GOODS_PRICE_FL,
+		GOODS_PRICE_GROUP,
+		GOODS_PRICE_UNIT,
+		GOODS_PRICE_TYPE,
+		CONNERSTONE_PRICE,
+		LABOR_COST_PRICE,
+		LABOR_METAL_TYPE,
+		LABOR_METAL_LOWER_TYPE,
+		DELIVERY_NATION,
+		DELIVERY_PACKING_RULE,
+		DELIVERY_PACKING_PRICE,
+		OPTION_FL,
+		OPTION_DISPLAY_FL,
+		OPTION_DISPLAY_IMAGE,
+		OPTIONS_NAME,
+		OPTIONS,
+		OPTIONS_EXT_FL,
+		OPTIONS_EXT_NAME,
+		OPTIONS_EXT,
+		OPTION_TEXT_FL,
+		OPTIONS_TEXT_NAME,
+		OPTIONS_TEXT,
+		OPTION_REF_FL,
+		OPTIONS_REF_NAME,
+		OPTIONS_REF,
+		GOODS_IMAGE_MASTER,
+		GOODS_IMAGE_ADDED,
+		SHORT_DESCRIPTION,
+		SHORT_DESCRIPTION_LOCALE,
+		EVENT_DESCRIPTION,
+		GOODS_DESCRIPTION,
+		GOODS_DESCRIPTION_LOCALE,
+		GOODS_DESCRIPTION_SAME_FL,
+		GOODS_DESCRIPTION_MOBILE,
+		GOODS_DESCRIPTION_MOBILE_LOCALE,
+		DELIVERY_FL,
+		DELIVERY_OPTION,
+		REF_GOODS_FL,
+		REF_GOODS,
+		GOODS_ICON_OPEN_DATE,
+		GOODS_ICON_CLOSE_DATE,
+		GOODS_ICON_TIME,
+		GOODS_ICON_FIX,
+		EXTERNAL_VIDEO_FL,
+		EXTERNAL_VIDEO_URL,
+		EXTERNAL_VIDEO_WIDTH,
+		EXTERNAL_VIDEO_HEIGHT,
+		DETAIL_INFO_DELIVERY_FL,
+		DETAIL_INFO_DELIVERY,
+		DETAIL_INFO_AS_FL,
+		DETAIL_INFO_AS,
+		DETAIL_INFO_REFUND_FL,
+		G.DETAIL_INFO_REFUND,
+		G.DETAIL_INFO_EXCHANGE_FL,
+		G.DETAIL_INFO_EXCHANGE,
+		G.SEO_TAG_FL,
+		G.SEO_TAG,
+		G.NAVER_FL,
+		G.NAVER_OPTIONS,
+		G.FACEBOOK_FL,
+		G.FACEBOOK_OPTIONS,
+		G.REVIEW_CNT,
+		G.REVIEW_POINT,
+		G.REVIEW_DATE,
+		G.QNA_CNT,
+		G.QNA_UNANSWERED_CNT,
+		G.QNA_DATE,
+		G.MEMO,
+		G.DELIVERY_DETAIL,
+		G.REG_DATE,
+		G.MOD_DATE
+		
+	</sql>
+	<select id="recentlist" resultMap="goodsInfoList">
+<![CDATA[
+SELECT
+]]>
+		<include refid="join-goods-info"/>
+<![CDATA[
+FROM kbm_goods_info G JOIN kbm_goods_recent R ON (G.MALL_ID = R.MALL_ID AND G.GOODS_CODE = R.GOODS_CODE)
+]]>
+		<where>
+			R.MALL_ID = #{mallId} AND
+			G.IS_HIDDEN_FL != 'Y' AND
+			R.TOKEN = #{token} AND
+			TIMESTAMPDIFF(HOUR, R.REG_DATE, now()) BETWEEN 0 AND
+			#{todayHour}
+		</where>
+<![CDATA[
+ORDER BY
+	R.REG_DATE DESC
+]]>
+	</select>
+	<selectPaging id="recentpaging" resultMap="goodsInfoList">
+<![CDATA[
+SELECT
+]]>
+		<include refid="join-goods-info"/>
+		<selectCount>
+<![CDATA[
+FROM kbm_goods_info G JOIN kbm_goods_recent R ON (G.MALL_ID = R.MALL_ID AND G.GOODS_CODE = R.GOODS_CODE)
+]]>
+			<where>
+				R.MALL_ID = #{mallId} AND
+				G.IS_HIDDEN_FL != 'Y' AND
+				R.TOKEN = #{token} AND
+				TIMESTAMPDIFF(HOUR, R.REG_DATE, now()) BETWEEN 0 AND
+				#{todayHour}
+			</where>
+		</selectCount>
+<![CDATA[
+ORDER BY
+	R.REG_DATE DESC
+]]>
+	</selectPaging>
+	<select id="view-badge" resultType="int">
+<![CDATA[
+	SELECT COUNT(*) AS CNT
+]]>
+<![CDATA[ FROM kbm_goods_info G ]]>
+		<include refid="list-where"/>
+<![CDATA[
+	AND G.REG_DATE BETWEEN #{badgeFrom} AND #{badgeTo}
+]]>
+	</select>
+	<delete id="wishdelete">
+<![CDATA[
+DELETE FROM kbm_goods_favor
+]]>
+		<where>
+<![CDATA[
+	MALL_ID = #{mallId} AND
+	TOKEN = #{token}
+]]>
+		</where>
+	</delete>
+	<select id="wishlist" resultMap="goodsInfoList">
+<![CDATA[
+SELECT
+]]>
+		<include refid="join-goods-info"/>
+<![CDATA[
+FROM kbm_goods_info G JOIN kbm_goods_favor F ON (G.MALL_ID = F.MALL_ID AND G.GOODS_CODE = F.GOODS_CODE)
+]]>
+		<where>
+			F.MALL_ID = #{mallId}
+			AND G.IS_HIDDEN_FL = 'N'
+			AND F.TOKEN = #{token}
+		</where>
+<![CDATA[
+ORDER BY
+	F.REG_DATE DESC
+]]>
+	</select>
+	<selectPaging id="wishpaging" resultMap="goodsInfoList">
+<![CDATA[
+SELECT
+]]>
+		<include refid="join-goods-info"/>
+		<selectCount>
+<![CDATA[
+FROM kbm_goods_info G JOIN kbm_goods_favor F ON (G.MALL_ID = F.MALL_ID AND G.GOODS_CODE = F.GOODS_CODE)
+]]>
+			<where>
+				F.MALL_ID = #{mallId}
+				AND G.IS_HIDDEN_FL = 'N'
+				AND F.TOKEN = #{token}
+			</where>
+		</selectCount>
+<![CDATA[
+ORDER BY
+	F.REG_DATE DESC
+]]>
+	</selectPaging>
+	<select id="list" resultMap="goodsInfoList">
+		<include refid="select-list"/>
+		<if test="$token != ''">	
+			,
+			F.MALL_ID AS F_MALL_ID, 
+			F.GOODS_CODE AS F_GOODS_CODE,
+			F.TOKEN AS F_TOKEN,
+			F.REG_DATE AS F_REG_DATE,
+		</if>
+<![CDATA[ FROM kbm_goods_info G ]]>
+		<include refid="list-where"/>
+		<include refid="list-orderby"/>
+	</select>
+	<sql>
+	
+	<sql id="select-list-simple"><![CDATA[
+
+SELECT
+	MALL_ID,
+	GOODS_CODE,
+	GOODS_CATEGORY,
+	GOODS_CATEGORY_MST,
+	GOODS_DISPLAY_FL,
+	GOODS_DISPLAY_MOBILE_FL,
+	GOODS_SELL_FL,
+	GOODS_SELL_MOBILE_FL,
+	GOODS_SELL_TYPE,
+	SELLER_MEM_NO,
+	SELLER_MEM_NM,
+	USE_COMMISSION,
+	COMMISSION,
+	GOODS_CD,
+	GOODS_NM,
+	GOODS_OPEN_DT,
+	GOODS_CLOSE_DT,
+	GOODS_STATE,
+	GOODS_COLOR,
+	BRAND_CD,
+	MEMBER_GROUP_NO,
+	ONLY_ADULT_FL,
+	GOODS_SEARCH_OPTION,
+	GOODS_ATTR,
+	ONLY_ADULT_DISPLAY_FL,
+	GOODS_ACCESS,
+	GOODS_ICON_OPEN_DATE,
+	GOODS_ICON_CLOSE_DATE,
+	GOODS_ICON_TIME,
+	GOODS_ICON_FIX
+	]]></sql>
+	</sql>
+	
+	<select id="list-simple" resultMap="goodsInfoList">
+
+		<include refid="select-list-simple"/>
+<![CDATA[ FROM kbm_goods_info G ]]>
+		<include refid="list-where"/>
+		<include refid="list-orderby"/>
+	</select>
+	<selectPaging id="paging" resultMap="goodsInfoList">
+		<include refid="select-list"/>
+		<selectCount>
+		
+<![CDATA[ FROM kbm_goods_info G ]]>
+			<include refid="list-where"/>
+			
+		</selectCount>
+		<include refid="list-orderby"/>
+	</selectPaging>
+	<select id="category-list" resultMap="goodsInfoCategoryList">
+		<include refid="select-list"/>,
+		C.CATE_TYPE,
+		C.IS_MASTER,
+		C.GOODS_CATEGORY AS GOODS_CATEGORY_SUB,
+		C.GOODS_CATEGORY_ORD,
+		C.GOODS_CATEGORY_FIX
+<![CDATA[ FROM kbm_goods_info G JOIN kbm_goods_category C ON (G.MALL_ID = C.MALL_ID AND G.GOODS_CODE = C.GOODS_CODE) ]]>
+		<include refid="list-where"/>
+		<include refid="list-orderby"/>
+	</select>
+	<selectPaging id="category-paging" resultMap="goodsInfoCategoryList">
+		<include refid="select-list"/>
+		,
+		C.CATE_TYPE,
+		C.IS_MASTER,
+		C.GOODS_CATEGORY AS GOODS_CATEGORY_SUB,
+		C.GOODS_CATEGORY_ORD,
+		C.GOODS_CATEGORY_FIX
+		<selectCount>
+<![CDATA[ FROM kbm_goods_info G JOIN kbm_goods_category C ON (G.MALL_ID = C.MALL_ID AND G.GOODS_CODE = C.GOODS_CODE)  ]]>
+			<include refid="list-where"/>
+		</selectCount>
+		<include refid="list-orderby"/>
+	</selectPaging>
+	<insert id="goods-search-insert">
+		<selectKey order="BEFORE">
+<![CDATA[
+DELETE FROM kbm_goods_category WHERE
+	MALL_ID = #{mallId} AND GOODS_CATEGORY = #{goodsCategoryMst}
+]]>
+		</selectKey>
+<![CDATA[
+INSERT INTO kbm_goods_category (
+	MALL_ID,
+	CATE_TYPE,
+	IS_MASTER,
+	GOODS_CODE,
+	GOODS_CATEGORY,
+	GOODS_CATEGORY_ORD,
+	GOODS_CATEGORY_FIX
+) VALUES
+]]>
+		<foreach item="item" collection="categoryVoList" separator=" , ">
+<![CDATA[
+(
+	#{mallId},
+	#{item.cateType},
+	#{item.isMaster},
+	#{item.goodsCode},
+	#{goodsCategoryMst},
+	#{item.goodsCategoryOrd},
+	#{item.goodsCategoryFix}
+)
+]]>
+		</foreach>
+		<selectKey order="AFTER">
+<![CDATA[
+UPDATE kbm_goods_info G , kbm_goods_category T SET 
+	G.GOODS_SORT_ORD = T.GOODS_CATEGORY_ORD,
+	G.GOODS_SORT_FIX = T.GOODS_CATEGORY_FIX
+WHERE
+	T.MALL_ID = #{mallId} AND T.GOODS_CATEGORY = #{goodsCategoryMst} AND
+	G.GOODS_CODE = T.GOODS_CODE AND G.MALL_ID = T.MALL_ID
+]]>
+		</selectKey>
+		<selectKey order="AFTER">
+<![CDATA[
+DELETE FROM kbm_goods_category WHERE
+	MALL_ID = #{mallId} AND GOODS_CATEGORY = #{goodsCategoryMst}
+]]>
+		</selectKey>
+
+	</insert>
+	<select id="search-goods-list" resultMap="goodsCategoryList">
+<![CDATA[
+SELECT
+	MALL_ID,
+	'S' AS CATE_TYPE,
+	'Y' AS IS_MASTER,
+	GOODS_CODE,
+	'SEARCH' AS GOODS_CATEGORY,
+	GOODS_SORT_ORD AS GOODS_CATEGORY_ORD,
+	GOODS_SORT_FIX AS GOODS_CATEGORY_FIX
+FROM kbm_goods_info WHERE
+	MALL_ID = #{mallId} AND
+	GOODS_CODE NOT LIKE 'TMP%'
+ORDER BY 
+]]>
+		<choose>
+			<when test="$goodsCategoryFix == 'REG_DT'">
+				REG_DATE DESC, GOODS_CODE ASC 
+			</when>
+			<otherwise>
+				GOODS_SORT_ORD ASC
+			</otherwise>
+		</choose>
+	</select>
+	<select id="search-list" resultMap="goodsInfoCategoryList">
+		<include refid="select-list"/>,
+		,
+		'Y' AS IS_MASTER,
+		G.GOODS_SORT_ORD AS GOODS_CATEGORY_ORD,
+		G.GOODS_SORT_FIX AS GOODS_CATEGORY_FIX
+<![CDATA[ FROM kbm_goods_info G ]]>
+		<include refid="list-where"/>
+		<include refid="list-orderby"/>
+	</select>
+	<selectPaging id="search-paging" resultMap="goodsInfoCategoryList">
+		<include refid="select-list"/>
+		,
+		'Y' AS IS_MASTER,
+		G.GOODS_SORT_ORD AS GOODS_CATEGORY_ORD,
+		G.GOODS_SORT_FIX AS GOODS_CATEGORY_FIX
+		<selectCount>
+<![CDATA[ FROM kbm_goods_info G ]]>
+			<include refid="list-where"/>
+		</selectCount>
+		<include refid="list-orderby"/>
+	</selectPaging>
+	<select id="view" resultMap="goodsInfoView">
+		<include refid="select-view"/>
+<![CDATA[ FROM kbm_goods_info G ]]>
+		<where>
+<![CDATA[
+	MALL_ID = #{mallId} AND
+	GOODS_CODE = #{goodsCode}
+]]>
+		</where>
+	</select>
+	<select id="view-status" resultMap="goodsStatus">
+<![CDATA[
+SELECT 
+	SUM(IF(IS_HIDDEN_FL = 'N' AND (GOODS_SELL_FL = 'Y' OR GOODS_SELL_MOBILE_FL = 'Y'),1,0)) AS GOODS_CNT,
+	SUM(IF(IS_HIDDEN_FL = 'N' AND (GOODS_SELL_FL = 'Y' OR GOODS_SELL_MOBILE_FL = 'Y'),1,0)) AS GOODS_SALE_CNT,
+	SUM(IF(IS_HIDDEN_FL = 'N' AND (GOODS_SELL_FL = 'Y' OR GOODS_SELL_MOBILE_FL = 'Y') AND STOCK_FL = 'Y' AND STOCK_CNT <= 0,1,0)) AS GOODS_OUT_STOCK_CNT,
+	SUM(IF(IS_HIDDEN_FL = 'N' AND (GOODS_SELL_FL = 'Y' OR GOODS_SELL_MOBILE_FL = 'Y') AND STOCK_FL = 'Y' AND STOCK_CNT < 10,1,0)) AS GOODS_OUT_STOCK10_CNT,
+	SUM(IF(IS_HIDDEN_FL = 'Y' OR (GOODS_SELL_FL = 'N' AND GOODS_SELL_MOBILE_FL = 'N'),1,0)) AS GOODS_UN_SALE_CNT,
+	(SELECT COUNT(*) FROM kbm_goods_qna Q WHERE Q.MALL_ID = #{mallId} AND G.GOODS_CODE = Q.GOODS_CODE ) AS GOODS_QNA_CNT,
+	COUNT(*) AS GOODS_TOTAL_CNT
+FROM kbm_goods_info G]]>
+		<where>
+<![CDATA[
+	MALL_ID = #{mallId} AND GOODS_CODE NOT LIKE 'TMP%' AND IS_HIDDEN_FL = 'N'
+]]>
+			<if test="!empty($scmNo)">
+				AND SELLER_MEM_NO = #{scmNo}
+			</if>
+		</where>
+	</select>
+	<insert id="insert">
+<![CDATA[
+INSERT INTO kbm_goods_info (
+	MALL_ID,
+	GOODS_CODE,
+	GOODS_CATEGORY,
+	GOODS_CATEGORY_MST,
+	GOODS_DISPLAY_FL,
+	GOODS_DISPLAY_MOBILE_FL,
+	GOODS_SELL_FL,
+	GOODS_SELL_MOBILE_FL,
+	GOODS_SELL_TYPE,
+	SELLER_MEM_NO,
+	SELLER_MEM_NM,
+	USE_COMMISSION,
+	COMMISSION,
+	GOODS_CD,
+	GOODS_NM,
+	GOODS_NM_LOCALE,
+	GOODS_SEARCH_WORD,
+	GOODS_OPEN_DT,
+	GOODS_CLOSE_DT,
+	GOODS_STATE,
+	GOODS_COLOR,
+	BRAND_CD,
+	MAKER_NM,
+	ORIGIN_NM,
+	HSCODE,
+	HSCODE_LOCALE,
+	MAKE_YMD,
+	LAUNCH_YMD,
+	EFFECTIVE_START_YMD,
+	EFFECTIVE_END_YMD,
+	GOODS_PERMISSION,
+	MEMBER_GROUP_NO,
+	ONLY_ADULT_FL,
+	ONLY_ADULT_DISPLAY_FL,
+	GOODS_ACCESS,
+	ADD_INFO,
+	ADDED_FIELD01,
+	ADDED_FIELD02,
+	ADDED_FIELD03,
+	ADDED_FIELD04,
+	ADDED_FIELD05,
+	ADDED_FIELD06,
+	ADDED_FIELD07,
+	ADDED_FIELD08,
+	ADDED_FIELD09,
+	ADDED_FIELD10,
+	ADD_MUST_INFO,
+	TAX_PERCENT,
+	GOODS_WEIGHT,
+	STOCK_FL,
+	STOCK_CNT,
+	SALES_UNIT,
+	SOLD_OUT_FL,
+	MIN_ORDER_CNT,
+	MAX_ORDER_CNT,
+	SALES_OPEN_DATE,
+	SALES_CLOSE_DATE,
+	MILEAGE_FL,
+	MILEAGE_GOODS,
+	MILEAGE_GOODS_UNIT,
+	MILEAGE_GROUP,
+	GOODS_DISCOUNT_FL,
+	FIXED_GOODS_DISCOUNT,
+	GOODS_DISCOUNT_GROUP,
+	GOODS_DISCOUNT_GROUP_MEMBER_INFO,
+	EXCEPT_BENEFIT,
+	EXCEPT_BENEFIT_GROUP,
+	EXCEPT_BENEFIT_GROUP_INFO,
+	FIXED_PRICE,
+	COST_PRICE,
+	GOODS_PRICE,
+	GOODS_PRICE_STRING,
+	GOODS_PRICE_FL,
+	GOODS_PRICE_GROUP,
+	GOODS_PRICE_UNIT,
+	GOODS_PRICE_TYPE,
+	CONNERSTONE_PRICE,
+	LABOR_COST_PRICE,
+	LABOR_METAL_TYPE,
+	LABOR_METAL_LOWER_TYPE,
+	DELIVERY_NATION,
+	DELIVERY_PACKING_RULE,
+	DELIVERY_PACKING_PRICE,
+	OPTION_FL,
+	OPTION_FILE,
+	GOODS_ATTR,
+	GOODS_MALL_SEARCH_OPTION,
+	GOODS_SEARCH_OPTION,
+	OPTION_DISPLAY_FL,
+	OPTION_DISPLAY_IMAGE,
+	OPTIONS_NAME,
+	OPTIONS,
+	OPTIONS_EXT_FL,
+	OPTIONS_EXT_NAME,
+	OPTIONS_EXT,
+	OPTION_TEXT_FL,
+	OPTIONS_TEXT_NAME,
+	OPTIONS_TEXT,
+	OPTION_REF_FL,
+	OPTIONS_REF_NAME,
+	OPTIONS_REF,
+	OPTION_DATA,
+	GOODS_MALL_DATA,
+	GOODS_IMAGE_MASTER,
+	GOODS_IMAGE_ADDED,
+	SHORT_DESCRIPTION,
+	SHORT_DESCRIPTION_LOCALE,
+	EVENT_DESCRIPTION,
+	EVENT_DESCRIPTION_LOCALE,
+	GOODS_DESCRIPTION,
+	GOODS_DESCRIPTION_LOCALE,
+	GOODS_DESCRIPTION_SAME_FL,
+	GOODS_DESCRIPTION_MOBILE,
+	GOODS_DESCRIPTION_MOBILE_LOCALE,
+	DELIVERY_FL,
+	DELIVERY_OPTION,
+	REF_GOODS_FL,
+	REF_GOODS,
+	GOODS_ICON_OPEN_DATE,
+	GOODS_ICON_CLOSE_DATE,
+	GOODS_ICON_TIME,
+	GOODS_ICON_FIX,
+	EXTERNAL_VIDEO_FL,
+	EXTERNAL_VIDEO_URL,
+	EXTERNAL_VIDEO_WIDTH,
+	EXTERNAL_VIDEO_HEIGHT,
+	DETAIL_INFO_DELIVERY_FL,
+	DETAIL_INFO_DELIVERY,
+	DETAIL_INFO_AS_FL,
+	DETAIL_INFO_AS,
+	DETAIL_INFO_REFUND_FL,
+	DETAIL_INFO_REFUND,
+	DETAIL_INFO_EXCHANGE_FL,
+	DETAIL_INFO_EXCHANGE,
+	SEO_TAG_FL,
+	SEO_TAG,
+	NAVER_FL,
+	NAVER_OPTIONS,
+	FACEBOOK_FL,
+	FACEBOOK_OPTIONS,
+	MEMO,
+	DELIVERY_DETAIL,
+	REG_DATE,
+	MOD_DATE
+) VALUES (
+	#{mallId},
+	#{goodsCode},
+	#{goodsCategory,typeHandler=implode},
+	#{goodsCategoryMst},
+	#{goodsDisplayFl},
+	#{goodsDisplayMobileFl},
+	#{goodsSellFl},
+	#{goodsSellMobileFl},
+	#{goodsSellType},
+	#{sellerMemNo},
+	#{sellerMemNm},
+	#{useCommission},
+	#{commission,typeHandler=float2int},
+	#{goodsCd},
+	#{goodsNm},
+	#{goodsNmLocale,typeHandler=serialize},
+	#{goodsSearchWord},
+	#{goodsOpenDt,typeHandler=date},
+	#{goodsCloseDt,typeHandler=date},
+	#{goodsState},
+	#{goodsColor,typeHandler=implode},
+	#{brandCd},
+	#{makerNm},
+	#{originNm},
+	#{hscode},
+	#{hscodeLocale,typeHandler=serialize},
+	#{makeYmd,typeHandler=date},
+	#{launchYmd,typeHandler=date},
+	#{effectiveStartYmd,typeHandler=date},
+	#{effectiveEndYmd,typeHandler=date},
+	#{goodsPermission},
+	#{memberGroupNo,typeHandler=implode},
+	#{onlyAdultFl},
+	#{onlyAdultDisplayFl,typeHandler=implode},
+	#{goodsAccess},
+	#{addInfo,typeHandler=serialize},
+	#{addedField01},
+	#{addedField02},
+	#{addedField03},
+	#{addedField04},
+	#{addedField05},
+	#{addedField06},
+	#{addedField07},
+	#{addedField08},
+	#{addedField09},
+	#{addedField10},
+	#{addMustInfo,typeHandler=serialize},
+	#{taxPercent},
+	#{goodsWeight},
+	#{stockFl},
+	#{stockCnt},
+	#{salesUnit},
+	#{soldOutFl},
+	#{minOrderCnt},
+	#{maxOrderCnt},
+	#{salesOpenDate,typeHandler=datetime},
+	#{salesCloseDate,typeHandler=datetime},
+	#{mileageFl},
+	#{mileageGoods},
+	#{mileageGoodsUnit},
+	#{mileageGroup,typeHandler=implode},
+	#{goodsDiscountFl},
+	#{fixedGoodsDiscount},
+	#{goodsDiscountGroup},
+	#{goodsDiscountGroupMemberInfo},
+	#{exceptBenefit},
+	#{exceptBenefitGroup},
+	#{exceptBenefitGroupInfo},
+	#{fixedPrice},
+	#{costPrice},
+	#{goodsPrice},
+	#{goodsPriceString},
+	#{goodsPriceFl},
+	#{goodsPriceGroup,typeHandler=serialize},
+	#{goodsPriceUnit},
+	#{goodsPriceType},
+	#{connerstonePrice},
+	#{laborCostPrice},
+	#{laborMetalType},
+	#{laborMetalLowerType},
+	#{deliveryNation},
+	#{deliveryPackingRule},
+	#{deliveryPackingPrice,typeHandler=serialize},
+	#{optionFl},
+	#{optionFile},
+	#{goodsAttr,typeHandler=implode},
+	#{goodsMallSearchOption,typeHandler=implode},
+	#{goodsSearchOption,typeHandler=implode},
+	#{optionDisplayFl},
+	#{optionDisplayImage},
+	#{optionsName,typeHandler=serialize},
+	#{options,typeHandler=serialize},
+	#{optionsExtFl},
+	#{optionsExtName,typeHandler=serialize},
+	#{optionsExt,typeHandler=serialize},
+	#{optionTextFl},
+	#{optionsTextName,typeHandler=serialize},
+	#{optionsText,typeHandler=serialize},
+	#{optionRefFl},
+	#{optionsRefName,typeHandler=serialize},
+	#{optionsRef,typeHandler=serialize},
+	#{optionData,typeHandler=serialize},
+	#{goodsMallData,typeHandler=serialize},
+	#{goodsImageMaster},
+	#{goodsImageAdded},
+	#{shortDescription},
+	#{shortDescriptionLocale,typeHandler=serialize},
+	#{eventDescription},
+	#{eventDescriptionLocale,typeHandler=serialize},
+	#{goodsDescription},
+	#{goodsDescriptionLocale,typeHandler=serialize},
+	#{goodsDescriptionSameFl},
+	#{goodsDescriptionMobile},
+	#{goodsDescriptionMobileLocale,typeHandler=serialize},
+	#{deliveryFl},
+	#{deliveryOption},
+	#{refGoodsFl},
+	#{refGoods,typeHandler=implode},
+	#{goodsIconOpenDate,typeHandler=date},
+	#{goodsIconCloseDate,typeHandler=date},
+	#{goodsIconTime,typeHandler=implode},
+	#{goodsIconFix,typeHandler=implode},
+	#{externalVideoFl},
+	#{externalVideoUrl},
+	#{externalVideoWidth},
+	#{externalVideoHeight},
+	#{detailInfoDeliveryFl},
+	#{detailInfoDelivery},
+	#{detailInfoAsFl},
+	#{detailInfoAs},
+	#{detailInfoRefundFl},
+	#{detailInfoRefund},
+	#{detailInfoExchangeFl},
+	#{detailInfoExchange},
+	#{seoTagFl},
+	#{seoTag,typeHandler=serialize},
+	#{naverFl},
+	#{naverOptions,typeHandler=serialize},
+	#{facebookFl},
+	#{facebookOptions,typeHandler=serialize},
+	#{memo},
+	#{deliveryDetail,typeHandler=serialize},
+	NOW(),
+	NOW()
+)
+]]>
+	</insert>
+	<update id="update">
+<![CDATA[
+UPDATE kbm_goods_info
+]]>
+		<set>
+			<if test="$goodsCategory != ''">
+				GOODS_CATEGORY = #{goodsCategory,typeHandler=implode},
+			</if>
+			<if test="$goodsCategoryMst != ''">
+				GOODS_CATEGORY_MST = #{goodsCategoryMst},
+			</if>
+			<if test="$goodsDisplayFl != ''">
+				GOODS_DISPLAY_FL = #{goodsDisplayFl},
+			</if>
+			<if test="$goodsDisplayMobileFl != ''">
+				GOODS_DISPLAY_MOBILE_FL = #{goodsDisplayMobileFl},
+			</if>
+			<if test="$goodsSellFl != ''">
+				GOODS_SELL_FL = #{goodsSellFl},
+			</if>
+			<if test="$goodsSellMobileFl != ''">
+				GOODS_SELL_MOBILE_FL = #{goodsSellMobileFl},
+			</if>
+			<if test="$goodsSellType">
+				GOODS_SELL_TYPE = #{goodsSellType},
+			</if>
+			<if test="$useCommission != ''">
+				USE_COMMISSION = #{useCommission},
+				COMMISSION = #{commission,typeHandler=float2int},
+			</if>
+			<if test="$goodsCd != ''">
+				GOODS_CD = #{goodsCd},
+			</if>
+			<if test="$goodsNm != ''">
+				GOODS_NM = #{goodsNm},
+				SELLER_MEM_NO = #{sellerMemNo},
+				SELLER_MEM_NM = #{sellerMemNm},
+				GOODS_NM_LOCALE = #{goodsNmLocale,typeHandler=serialize},
+				SHORT_DESCRIPTION = #{shortDescription},
+				SHORT_DESCRIPTION_LOCALE = #{shortDescriptionLocale,typeHandler=serialize},
+				EVENT_DESCRIPTION =
+				#{eventDescription},
+				EVENT_DESCRIPTION_LOCALE = #{eventDescriptionLocale,typeHandler=serialize},
+				GOODS_DESCRIPTION = #{goodsDescription},
+				GOODS_DESCRIPTION_LOCALE = #{goodsDescriptionLocale,typeHandler=serialize},
+				GOODS_DESCRIPTION_SAME_FL = #{goodsDescriptionSameFl},
+				GOODS_DESCRIPTION_MOBILE =
+				#{goodsDescriptionMobile},
+				GOODS_DESCRIPTION_MOBILE_LOCALE = #{goodsDescriptionMobileLocale,typeHandler=serialize},
+				GOODS_SEARCH_WORD = #{goodsSearchWord},
+				GOODS_OPEN_DT = #{goodsOpenDt,typeHandler=datetime},
+				GOODS_CLOSE_DT = #{goodsCloseDt,typeHandler=datetime},
+				SALES_OPEN_DATE = #{salesOpenDate,typeHandler=datetime},
+				SALES_CLOSE_DATE = #{salesCloseDate,typeHandler=datetime},
+				MAKE_YMD = #{makeYmd,typeHandler=datetime},
+				LAUNCH_YMD = #{launchYmd,typeHandler=datetime},
+				EFFECTIVE_START_YMD = #{effectiveStartYmd,typeHandler=datetime},
+				EFFECTIVE_END_YMD =
+				#{effectiveEndYmd,typeHandler=datetime},
+				TAX_PERCENT = #{taxPercent},
+				GOODS_WEIGHT = #{goodsWeight},
+				STOCK_FL = #{stockFl},
+				STOCK_CNT = #{stockCnt},
+				MILEAGE_GOODS = #{mileageGoods},
+				MIN_ORDER_CNT = #{minOrderCnt},
+				MAX_ORDER_CNT = #{maxOrderCnt},
+				GOODS_ATTR = #{goodsAttr,typeHandler=implode},
+				GOODS_MALL_SEARCH_OPTION = #{goodsMallSearchOption,typeHandler=implode},
+				GOODS_SEARCH_OPTION = #{goodsSearchOption,typeHandler=implode},
+				ADDED_FIELD01 = #{addedField01},
+				ADDED_FIELD02 = #{addedField02},
+				ADDED_FIELD03 = #{addedField03},
+				ADDED_FIELD04 = #{addedField04},
+				ADDED_FIELD05 = #{addedField05},
+				ADDED_FIELD06 = #{addedField06},
+				ADDED_FIELD07 = #{addedField07},
+				ADDED_FIELD08 = #{addedField08},
+				ADDED_FIELD09 = #{addedField09},
+				ADDED_FIELD10 = #{addedField10},
+			</if>
+			<if test="$goodsState != ''">
+				GOODS_STATE = #{goodsState},
+			</if>
+			<if test="$goodsColor != ''">
+				GOODS_COLOR = #{goodsColor,typeHandler=implode},
+			</if>
+			<if test="$brandCd != ''">
+				BRAND_CD = #{brandCd},
+			</if>
+			<if test="$makerNm != ''">
+				MAKER_NM = #{makerNm},
+			</if>
+			<if test="$originNm != ''">
+				ORIGIN_NM = #{originNm},
+			</if>
+			<if test="$hscode != ''">
+				HSCODE = #{hscode},
+				HSCODE_LOCALE = #{hscodeLocale,typeHandler=serialize},
+			</if>
+			<if test="$goodsPermission != ''">
+				GOODS_PERMISSION = #{goodsPermission},
+				MEMBER_GROUP_NO = #{memberGroupNo,typeHandler=implode},
+			</if>
+			<if test="$onlyAdultFl != ''">
+				ONLY_ADULT_FL = #{onlyAdultFl},
+			</if>
+			<if test="$onlyAdultDisplayFl != ''">
+				ONLY_ADULT_DISPLAY_FL = #{onlyAdultDisplayFl,typeHandler=implode},
+			</if>
+			<if test="$goodsAccess != ''">
+				GOODS_ACCESS = #{goodsAccess},
+			</if>
+			<if test="$addInfo != ''">
+				ADD_INFO = #{addInfo,typeHandler=serialize},
+			</if>
+			<if test="$addMustInfo != ''">
+				ADD_MUST_INFO = #{addMustInfo,typeHandler=serialize},
+			</if>
+			<if test="$salesUnit != ''">
+				SALES_UNIT = #{salesUnit},
+			</if>
+			<if test="$soldOutFl != ''">
+				SOLD_OUT_FL = #{soldOutFl},
+			</if>
+			<if test="$mileageFl != ''">
+				MILEAGE_FL = #{mileageFl},
+			</if>
+			<if test="$mileageGoodsUnit != ''">
+				MILEAGE_GOODS_UNIT = #{mileageGoodsUnit},
+			</if>
+			<if test="$mileageGroup != ''">
+				MILEAGE_GROUP = #{mileageGroup,typeHandler=implode},
+			</if>
+			<if test="$goodsDiscountFl != ''">
+				GOODS_DISCOUNT_FL = #{goodsDiscountFl},
+			</if>
+			<if test="$fixedGoodsDiscount != ''">
+				FIXED_GOODS_DISCOUNT = #{fixedGoodsDiscount},
+			</if>
+			<if test="$goodsDiscountGroup != ''">
+				GOODS_DISCOUNT_GROUP = #{goodsDiscountGroup},
+			</if>
+			<if test="$goodsDiscountGroupMemberInfo != ''">
+				GOODS_DISCOUNT_GROUP_MEMBER_INFO = #{goodsDiscountGroupMemberInfo},
+			</if>
+			<if test="$exceptBenefit != ''">
+				EXCEPT_BENEFIT = #{exceptBenefit},
+			</if>
+			<if test="$exceptBenefitGroup != ''">
+				EXCEPT_BENEFIT_GROUP = #{exceptBenefitGroup},
+			</if>
+			<if test="$exceptBenefitGroupInfo != ''">
+				EXCEPT_BENEFIT_GROUP_INFO = #{exceptBenefitGroupInfo},
+			</if>
+			<if test="$fixedPrice != ''">
+				FIXED_PRICE = #{fixedPrice},
+			</if>
+			<if test="$costPrice != ''">
+				COST_PRICE = #{costPrice},
+			</if>
+			<if test="$goodsPrice != ''">
+				GOODS_PRICE = #{goodsPrice},
+				GOODS_PRICE_STRING = #{goodsPriceString},
+				GOODS_PRICE_FL = #{goodsPriceFl},
+				GOODS_PRICE_GROUP = #{goodsPriceGroup,typeHandler=serialize},
+				GOODS_PRICE_UNIT = #{goodsPriceUnit},
+			</if>
+			<if test="$goodsPriceType != ''">
+				GOODS_PRICE_TYPE = #{goodsPriceType},
+			</if>
+			<if test="$connerstonePrice != ''">
+				CONNERSTONE_PRICE = #{connerstonePrice},
+			</if>
+			<if test="$laborCostPrice != ''">
+				LABOR_COST_PRICE = #{laborCostPrice},
+			</if>
+			<if test="$laborMetalType != ''">
+				LABOR_METAL_TYPE = #{laborMetalType},
+			</if>
+			<if test="$laborMetalLowerType != ''">
+				LABOR_METAL_LOWER_TYPE = #{laborMetalLowerType},
+			</if>
+			<if test="$deliveryNation != ''">
+				DELIVERY_NATION = #{deliveryNation},
+			</if>
+			<if test="$deliveryPackingRule != ''">
+				DELIVERY_PACKING_RULE = #{deliveryPackingRule},
+				DELIVERY_PACKING_PRICE = #{deliveryPackingPrice,typeHandler=serialize},
+			</if>
+			<if test="$optionFile != ''">
+				OPTION_FILE = #{optionFile},
+			</if>
+			<if test="$optionData != ''">
+				OPTION_DATA = #{optionData,typeHandler=serialize},
+			</if>
+			<if test="$goodsMallData != ''">
+				GOODS_MALL_DATA = #{goodsMallData,typeHandler=serialize},
+			</if>
+			<if test="$optionDisplayFl != ''">
+				OPTION_DISPLAY_FL = #{optionDisplayFl},
+			</if>
+			<if test="$optionDisplayImage != ''">
+				OPTION_DISPLAY_IMAGE = #{optionDisplayImage},
+			</if>
+			<if test="$optionFl != ''">
+				OPTION_FL = #{optionFl},
+				OPTIONS_NAME = #{optionsName,typeHandler=serialize},
+				OPTIONS = #{options,typeHandler=serialize},
+			</if>
+			<if test="$optionsExtFl != ''">
+				OPTIONS_EXT_FL = #{optionsExtFl},
+				OPTIONS_EXT_NAME = #{optionsExtName,typeHandler=serialize},
+				OPTIONS_EXT = #{optionsExt,typeHandler=serialize},
+			</if>
+			<if test="$optionTextFl != ''">
+				OPTION_TEXT_FL = #{optionTextFl},
+				OPTIONS_TEXT_NAME = #{optionsTextName,typeHandler=serialize},
+				OPTIONS_TEXT = #{optionsText,typeHandler=serialize},
+			</if>
+			<if test="$optionRefFl != ''">
+				OPTION_REF_FL = #{optionRefFl},
+				OPTIONS_REF_NAME = #{optionsRefName,typeHandler=serialize},
+				OPTIONS_REF = #{optionsRef,typeHandler=serialize},
+			</if>
+			<if test="$goodsImageMaster != ''">
+				GOODS_IMAGE_MASTER = #{goodsImageMaster},
+				GOODS_IMAGE_ADDED = #{goodsImageAdded},
+			</if>
+			<if test="$deliveryFl != ''">
+				DELIVERY_FL = #{deliveryFl},
+			</if>
+			<if test="$deliveryOption != ''">
+				DELIVERY_OPTION = #{deliveryOption},
+			</if>
+			<if test="$refGoodsFl != ''">
+				REF_GOODS_FL = #{refGoodsFl},
+			</if>
+			<if test="$refGoods != ''">
+				REF_GOODS = #{refGoods,typeHandler=implode},
+			</if>
+			<if test="$goodsIconTime != ''">
+				GOODS_ICON_OPEN_DATE = #{goodsIconOpenDate,typeHandler=datetime},
+				GOODS_ICON_CLOSE_DATE = #{goodsIconCloseDate,typeHandler=datetime},
+				GOODS_ICON_TIME = #{goodsIconTime,typeHandler=implode},
+			</if>
+			<if test="$goodsIconFix != ''">
+				GOODS_ICON_FIX = #{goodsIconFix,typeHandler=implode},
+			</if>
+			<if test="$externalVideoFl != ''">
+				EXTERNAL_VIDEO_FL = #{externalVideoFl},
+				EXTERNAL_VIDEO_URL = #{externalVideoUrl},
+				EXTERNAL_VIDEO_WIDTH = #{externalVideoWidth},
+				EXTERNAL_VIDEO_HEIGHT = #{externalVideoHeight},
+			</if>
+			<if test="$detailInfoDeliveryFl != ''">
+				DETAIL_INFO_DELIVERY_FL = #{detailInfoDeliveryFl},
+			</if>
+			<if test="$detailInfoDelivery != ''">
+				DETAIL_INFO_DELIVERY = #{detailInfoDelivery},
+			</if>
+			<if test="$detailInfoAsFl != ''">
+				DETAIL_INFO_AS_FL = #{detailInfoAsFl},
+			</if>
+			<if test="$detailInfoAs != ''">
+				DETAIL_INFO_AS = #{detailInfoAs},
+			</if>
+			<if test="$detailInfoRefundFl != ''">
+				DETAIL_INFO_REFUND_FL = #{detailInfoRefundFl},
+			</if>
+			<if test="$detailInfoRefund != ''">
+				DETAIL_INFO_REFUND = #{detailInfoRefund},
+			</if>
+			<if test="$detailInfoExchangeFl != ''">
+				DETAIL_INFO_EXCHANGE_FL = #{detailInfoExchangeFl},
+			</if>
+			<if test="$detailInfoExchange != ''">
+				DETAIL_INFO_EXCHANGE = #{detailInfoExchange},
+			</if>
+			<if test="$seoTagFl != ''">
+				SEO_TAG_FL = #{seoTagFl},
+			</if>
+			<if test="$seoTag != ''">
+				SEO_TAG = #{seoTag,typeHandler=serialize},
+			</if>
+			<if test="$naverFl != ''">
+				NAVER_FL = #{naverFl},
+			</if>
+			<if test="$naverOptions != ''">
+				NAVER_OPTIONS = #{naverOptions,typeHandler=serialize},
+			</if>
+			<if test="$facebookFl != ''">
+				FACEBOOK_FL = #{facebookFl},
+			</if>
+			<if test="$facebookOptions != ''">
+				FACEBOOK_OPTIONS = #{facebookOptions},
+			</if>
+			<if test="$memo != ''">
+				MEMO = #{memo},
+			</if>
+			<if test="$deliveryDetail != ''">
+				DELIVERY_DETAIL = #{deliveryDetail,typeHandler=serialize},
+			</if>
+			MOD_DATE = NOW(),
+		</set>
+		<where>
+<![CDATA[
+	MALL_ID = #{mallId} AND
+	GOODS_CODE = #{goodsCode}
+]]>
+		</where>
+	</update>
+	<update id="reviewupdate">
+<![CDATA[
+UPDATE kbm_goods_info
+]]>
+		<set>
+			REVIEW_CNT = ( SELECT COUNT(REVIEW_UID) FROM kbm_goods_review
+			WHERE MALL_ID = #{mallId} AND GOODS_CODE = #{goodsCode}),
+			REVIEW_POINT = ( SELECT AVG(REVIEW_POINT) FROM
+			kbm_goods_review WHERE
+			MALL_ID = #{mallId} AND GOODS_CODE = #{goodsCode}),
+			REVIEW_DATE = (
+			SELECT MAX(MOD_DATE) FROM
+			kbm_goods_review WHERE MALL_ID = #{mallId}
+			AND
+			GOODS_CODE = #{goodsCode})
+		</set>
+		<where>
+<![CDATA[
+	MALL_ID = #{mallId} AND
+	GOODS_CODE = #{goodsCode}
+]]>
+		</where>
+	</update>
+	<update id="updatemoddate">
+<![CDATA[
+UPDATE kbm_goods_info
+]]>
+		<set>
+			MOD_DATE = NOW()
+		</set>
+		<where>
+<![CDATA[
+	MALL_ID = #{mallId} AND
+]]>
+			GOODS_CODE IN (
+			<foreach item="item" collection="goodsCodes" separator=" , ">
+				#{item}
+			</foreach>
+			)
+		</where>
+	</update>
+	<update id="displayupdate">
+<![CDATA[
+UPDATE kbm_goods_info
+]]>
+		<set>
+			<if test="$goodsDisplayFl != ''">
+				GOODS_DISPLAY_FL = #{goodsDisplayFl},
+			</if>
+			<if test="$goodsDisplayMobileFl != ''">
+				GOODS_DISPLAY_MOBILE_FL = #{goodsDisplayMobileFl},
+			</if>
+			<if test="$goodsSellFl != ''">
+				GOODS_SELL_FL = #{goodsSellFl},
+			</if>
+			<if test="$goodsSellMobileFl != ''">
+				GOODS_SELL_MOBILE_FL = #{goodsSellMobileFl},
+			</if>
+		</set>
+		<where>
+<![CDATA[
+	MALL_ID = #{mallId} AND
+]]>
+			GOODS_CODE IN (
+			<foreach item="item" collection="goodsCodes" separator=" , ">
+				#{item}
+			</foreach>
+			)
+		</where>
+	</update>
+	<sql id="update-where">
+		<where>
+<![CDATA[
+	MALL_ID = #{mallId} AND
+]]>
+			GOODS_CODE IN (
+			<foreach item="item" collection="goodsCodes" separator=" , ">
+				#{item}
+			</foreach>
+			)
+		</where>
+	</sql>
+	<update id="updateprice">
+<![CDATA[
+UPDATE kbm_goods_info
+]]>
+		<set>
+			<if test="$batchForm.batchType == 'R'">
+				<choose>
+					<when test="$batchForm.toPrice == 'F'">
+						FIXED_PRICE
+					</when>
+					<when test="$batchForm.toPrice == 'C'">
+						COST_PRICE
+					</when>
+					<otherwise>
+						GOODS_PRICE
+					</otherwise>
+				</choose>
+				=
+				<choose>
+					<when test="$batchForm.fromPrice == 'F'">
+						FIXED_PRICE
+					</when>
+					<when test="$batchForm.fromPrice == 'C'">
+						COST_PRICE
+					</when>
+					<otherwise>
+						GOODS_PRICE
+					</otherwise>
+				</choose>
+				<choose>
+					<when test="$batchForm.priceUnit == 'P'">
+						* ( 1 + #{batchForm.price} / 100 )
+					</when>
+					<otherwise>
+						+ #{batchForm.price}
+					</otherwise>
+				</choose>
+			</if>
+			<if test="$batchForm.batchType == 'F'">
+				<if test="$batchForm.goodsPrice gt 0">
+					GOODS_PRICE = #{batchForm.goodsPrice},
+				</if>
+				<if test="$batchForm.costPrice gt 0">
+					COST_PRICE = #{batchForm.costPrice},
+				</if>
+				<if test="$batchForm.fixedPrice gt 0">
+					FIXED_PRICE = #{batchForm.fixedPrice},
+				</if>
+			</if>
+		</set>
+		<include refid="update-where"/>
+	</update>
+	<update id="updatemileage">
+<![CDATA[
+UPDATE kbm_goods_info
+]]>
+		<set>
+			<if test="$batchForm.mileageFl != ''">
+				MILEAGE_FL = #{batchForm.mileageFl},
+			</if>
+			<if test="$batchForm.mileageGoods != ''">
+				MILEAGE_GOODS = #{batchForm.mileageGoods},
+			</if>
+			<if test="$batchForm.mileageGoodsUnit != ''">
+				MILEAGE_GOODS_UNIT = #{batchForm.mileageGoodsUnit},
+			</if>
+			<if test="$batchForm.mileageGroup != ''">
+				MILEAGE_GROUP = #{batchForm.mileageGroup,typeHandler=implode},
+			</if>
+		</set>
+		<include refid="update-where"/>
+	</update>
+	<update id="updateinfo">
+<![CDATA[
+UPDATE kbm_goods_info
+]]>
+		<set>
+			<if test="$batchForm.sellerMemNo != ''">
+				SELLER_MEM_NO = #{batchForm.sellerMemNo},
+			</if>
+			<if test="$batchForm.originNm != ''">
+				ORIGIN_NM = #{batchForm.originNm},
+			</if>
+			<if test="$batchForm.makerNm != ''">
+				MAKER_NM = #{batchForm.makerNm},
+			</if>
+		</set>
+		<include refid="update-where"/>
+	</update>
+	<update id="updatecommission">
+<![CDATA[
+UPDATE kbm_goods_info
+]]>
+		<set>
+			<if test="$batchForm.useCommission != ''">
+				USE_COMMISSION = #{batchForm.useCommission},
+			</if>
+			<if test="$batchForm.commission != ''">
+				COMMISSION = #{batchForm.commission,typeHandler=float2int},
+			</if>
+		</set>
+		<include refid="update-where"/>
+	</update>
+
+	<update id="updateiconcolor">
+<![CDATA[
+UPDATE kbm_goods_info
+]]>
+		<set>
+			<if test="$batchForm.goodsColorUse eq 'Y'">
+				GOODS_COLOR = #{batchForm.goodsColor,typeHandler=implode},
+			</if>
+			<if test="$batchForm.goodsIconTimeUse eq 'Y'">
+				GOODS_ICON_OPEN_DATE = #{batchForm.goodsIconOpenDate,typeHandler=datetime},
+				GOODS_ICON_CLOSE_DATE = #{batchForm.goodsIconCloseDate,typeHandler=datetime},
+				GOODS_ICON_TIME = #{batchForm.goodsIconTime,typeHandler=implode},
+			</if>
+			<if test="$batchForm.goodsIconFixUse eq 'Y'">
+				GOODS_ICON_FIX = #{batchForm.goodsIconFix,typeHandler=implode},
+			</if>
+		</set>
+		<include refid="update-where"/>
+	</update>
+	<update id="updatestock">
+<![CDATA[
+UPDATE kbm_goods_info
+]]>
+		<set>
+			<if test="$batchForm.goodsDisplayFl ne ''">
+				GOODS_DISPLAY_FL = #{batchForm.goodsDisplayFl},
+			</if>
+			<if test="$batchForm.goodsDisplayMobileFl ne ''">
+				GOODS_DISPLAY_MOBILE_FL = #{batchForm.goodsDisplayMobileFl},
+			</if>
+			<if test="$batchForm.goodsSellFl ne ''">
+				GOODS_SELL_FL = #{batchForm.goodsSellFl},
+			</if>
+			<if test="$batchForm.goodsSellMobileFl ne ''">
+				GOODS_SELL_MOBILE_FL = #{batchForm.goodsSellMobileFl},
+			</if>
+			<if test="$batchForm.soldOutFl ne ''">
+				SOLD_OUT_FL = #{batchForm.soldOutFl},
+			</if>
+			<if test="$batchForm.optionFl ne ''">
+				OPTION_FL = #{batchForm.optionFl},
+			</if>
+			<if test="$batchForm.stockFl ne ''">
+				STOCK_FL = #{batchForm.stockFl},
+			</if>
+			<if test="$batchForm.stockCntType ne ''">
+				STOCK_CNT =
+				<choose>
+					<when test="$batchForm.stockCntType == 'P'">
+						STOCK_CNT +
+					</when>
+					<when test="$batchForm.stockCntType == 'M'">
+						STOCK_CNT -
+					</when>
+					<otherwise>
+					</otherwise>
+				</choose>
+				#{batchForm.stockCnt},
+			</if>
+		</set>
+		<include refid="update-where"/>
+	</update>
+	<update id="updatestock-sold">
+<![CDATA[
+UPDATE kbm_goods_info SET
+	STOCK_CNT = #{stockCnt},
+	OPTIONS = #{options,typeHandler=serialize},
+	OPTIONS_EXT = #{optionsExt,typeHandler=serialize},
+	OPTIONS_TEXT = #{optionsText,typeHandler=serialize},
+	OPTIONS_REF = #{optionsRef,typeHandler=serialize}
+WHERE
+	MALL_ID = #{mallId} AND
+	STOCK_FL = 'Y' AND
+	GOODS_CODE = #{goodsCode}
+]]>
+	</update>
+	<update id="updatesoldout">
+<![CDATA[
+UPDATE kbm_goods_info
+]]>
+		<set>
+			STOCK_FL = 'Y',
+			SOLD_OUT_FL = 'Y'
+		</set>
+		<include refid="update-where"/>
+	</update>
+	<update id="updatehidden">
+<![CDATA[
+UPDATE kbm_goods_info
+]]>
+		<set>
+			IS_HIDDEN_FL = 'Y'
+		</set>
+		<include refid="update-where"/>
+	</update>
+	<update id="updateshow">
+<![CDATA[
+UPDATE kbm_goods_info
+]]>
+		<set>
+			IS_HIDDEN_FL = 'N'
+		</set>
+		<include refid="update-where"/>
+	</update>
+	<delete id="delete">
+<![CDATA[
+DELETE FROM kbm_goods_info
+]]>
+		<where>
+<![CDATA[
+	MALL_ID = #{mallId} AND
+	GOODS_CODE = #{goodsCode}
+]]>
+		</where>
+	</delete>
+	<select id="goods_category_list" resultMap="goodsCategoryList">
+<![CDATA[
+SELECT
+	MALL_ID,
+	CATE_TYPE,
+	IS_MASTER,
+	GOODS_CODE,
+	GOODS_CATEGORY,
+	GOODS_CATEGORY_ORD,
+	GOODS_CATEGORY_FIX
+FROM kbm_goods_category
+]]>
+		<where>
+<![CDATA[
+	MALL_ID = #{mallId} AND
+	GOODS_CODE = #{goodsCode} AND
+	GOODS_CODE NOT LIKE 'TMP%'
+]]>
+		</where>
+	</select>
+	<select id="category-goods-list" resultMap="goodsCategoryList">
+<![CDATA[
+SELECT
+	C.MALL_ID,
+	C.CATE_TYPE,
+	C.IS_MASTER,
+	C.GOODS_CODE,
+	C.GOODS_CATEGORY,
+	C.GOODS_CATEGORY_ORD,
+	C.GOODS_CATEGORY_FIX
+FROM kbm_goods_category C, kbm_goods_info G WHERE
+	C.MALL_ID = #{mallId} AND
+	C.GOODS_CATEGORY = #{goodsCategory} AND 
+	C.GOODS_CODE NOT LIKE 'TMP%' AND
+	C.MALL_ID = G.MALL_ID AND
+	C.GOODS_CODE = G.GOODS_CODE
+ORDER BY 
+]]>
+		<choose>
+			<when test="$goodsCategoryFix == 'REG_DT'">
+				G.REG_DATE DESC, G.GOODS_CODE ASC 
+			</when>
+			<otherwise>
+				C.GOODS_CATEGORY_ORD ASC
+			</otherwise>
+		</choose>
+	</select>
+	<insert id="goods-category-insert">
+		<selectKey order="BEFORE">
+<![CDATA[
+DELETE FROM kbm_goods_category WHERE
+	MALL_ID = #{mallId} AND GOODS_CATEGORY = #{goodsCategoryMst}
+]]>
+		</selectKey>
+<![CDATA[
+INSERT INTO kbm_goods_category (
+	MALL_ID,
+	CATE_TYPE,
+	IS_MASTER,
+	GOODS_CODE,
+	GOODS_CATEGORY,
+	GOODS_CATEGORY_ORD,
+	GOODS_CATEGORY_FIX
+) VALUES
+]]>
+		<foreach item="item" collection="categoryVoList" separator=" , ">
+<![CDATA[
+(
+	#{mallId},
+	#{item.cateType},
+	#{item.isMaster},
+	#{item.goodsCode},
+	#{goodsCategoryMst},
+	#{item.goodsCategoryOrd},
+	#{item.goodsCategoryFix}
+)
+]]>
+		</foreach>
+	</insert>
+	<select id="goods_category_max" resultMap="goodsCategoryList">
+<![CDATA[
+SELECT
+	#{mallId} AS MALL_ID,
+	#{cateType} AS CATE_TYPE,
+	#{isMaster} AS IS_MASTER,
+	#{goodsCode} AS GOODS_CODE,
+	#{goodsCategory} AS GOODS_CATEGORY,
+	IFNULL(MAX(GOODS_CATEGORY_ORD),0) + 1 AS GOODS_CATEGORY_ORD,
+	#{goodsCategoryFix} GOODS_CATEGORY_FIX
+FROM kbm_goods_category
+]]>
+		<where>
+<![CDATA[
+	MALL_ID = #{mallId} AND
+	GOODS_CATEGORY = #{goodsCategory}
+]]>
+		</where>
+	</select>
+	<delete id="goods_category_delete">
+<![CDATA[
+DELETE FROM kbm_goods_category
+]]>
+		<where>
+<![CDATA[
+	MALL_ID = #{mallId} AND (
+		GOODS_CODE = #{goodsCode}
+		OR
+		GOODS_CODE NOT IN (
+			SELECT GOODS_CODE FROM kbm_goods_info WHERE MALL_ID = #{mallId}
+		)
+	)
+]]>
+		</where>
+	</delete>
+	<insert id="goods_category_insert">
+<![CDATA[
+INSERT INTO kbm_goods_category (
+	MALL_ID,
+	CATE_TYPE,
+	IS_MASTER,
+	GOODS_CODE,
+	GOODS_CATEGORY,
+	GOODS_CATEGORY_ORD,
+	GOODS_CATEGORY_FIX
+) VALUES
+]]>
+		<foreach item="item" collection="categoryVoList" separator=" , ">
+<![CDATA[
+(
+	#{mallId},
+	#{item.cateType},
+	#{item.isMaster},
+	#{goodsCode},
+	#{item.goodsCategory},
+	#{item.goodsCategoryOrd},
+	#{item.goodsCategoryFix}
+)
+]]>
+		</foreach>
+	</insert>
+	<delete id="goods_search_delete">
+<![CDATA[
+DELETE FROM kbm_goods_search_option
+]]>
+		<where>
+<![CDATA[
+	MALL_ID = #{mallId} AND (
+		GOODS_CODE = #{goodsCode}
+		OR
+		GOODS_CODE NOT IN (
+			SELECT GOODS_CODE FROM kbm_goods_info WHERE MALL_ID = #{mallId}
+		)
+	)
+]]>
+		</where>
+	</delete>
+	<insert id="goods_search_insert">
+<![CDATA[
+INSERT INTO kbm_goods_search_option (
+	MALL_ID,
+	GOODS_CODE,
+	GOODS_OPTION
+) VALUES
+]]>
+		<foreach item="item" collection="categoryVoList" separator=" , ">
+<![CDATA[
+(
+	#{mallId},
+	#{goodsCode},
+	#{item.goodsCategory}
+)
+]]>
+		</foreach>
+	</insert>	
+	<select id="goods_search_list" resultMap="treeList">
+<![CDATA[
+SELECT
+	MALL_ID,
+	GOODS_OPTION AS ID,
+	GOODS_OPTION AS VALUE,
+	COUNT(*) AS CNT
+FROM kbm_goods_search_option
+WHERE 
+	MALL_ID = #{mallId} AND
+	GOODS_CODE IN (
+		SELECT GOODS_CODE FROM kbm_goods_info G
+]]>
+		<include refid="list-where"/>
+<![CDATA[
+	)
+	GROUP BY GOODS_OPTION
+	ORDER BY GOODS_OPTION
+]]>
+	</select>
+	<delete id="goods_category_info_delete">
+<![CDATA[
+DELETE FROM kbm_goods_category_info
+]]>
+		<where>
+<![CDATA[
+	MALL_ID = #{mallId} AND
+	CATE_TYPE = #{cateType}
+]]>
+		</where>
+	</delete>
+	<insert id="goods_category_info_insert">
+<![CDATA[
+INSERT INTO kbm_goods_category_info (
+	MALL_ID,
+	CATE_TYPE,
+	GOODS_CATEGORY,
+	GOODS_CATEGORY_REF
+) VALUES
+]]>
+		<foreach item="item" collection="goodsCategoryVoList" separator=" , ">
+<![CDATA[
+(
+	#{mallId},
+	#{cateType},
+	#{item.goodsCategory},
+	#{item.goodsCategoryRef}
+)
+]]>
+		</foreach>
+	</insert>
+	<insert id="goods_category_info_update">
+		<selectKey order="BEFORE">
+<![CDATA[
+DELETE FROM kbm_goods_category WHERE
+	MALL_ID = #{mallId} AND IS_MASTER = 'N' AND  CATE_TYPE = #{cateType}
+]]>
+		</selectKey>
+<![CDATA[
+INSERT INTO kbm_goods_category (
+	MALL_ID,
+	CATE_TYPE,
+	IS_MASTER,
+	GOODS_CODE,
+	GOODS_CATEGORY
+) SELECT
+	C.MALL_ID,
+	C.CATE_TYPE,
+	'N',
+	C.GOODS_CODE,
+	I.GOODS_CATEGORY_REF
+FROM kbm_goods_category C, kbm_goods_category_info I
+WHERE
+	C.MALL_ID = I.MALL_ID AND
+	C.GOODS_CATEGORY = I.GOODS_CATEGORY AND
+	C.CATE_TYPE = I.CATE_TYPE AND
+	I.GOODS_CATEGORY != I.GOODS_CATEGORY_REF AND
+	C.MALL_ID = #{mallId} AND
+	C.CATE_TYPE = #{cateType}
+GROUP BY
+	C.MALL_ID, C.CATE_TYPE, C.GOODS_CODE, I.GOODS_CATEGORY_REF
+
+]]>
+		<selectKey order="AFTER">
+<![CDATA[
+DELETE FROM kbm_goods_category WHERE
+	MALL_ID = #{mallId} AND CATE_TYPE = #{cateType} AND
+	(MALL_ID, CATE_TYPE, GOODS_CATEGORY) NOT IN (
+		SELECT MALL_ID, CATE_TYPE, GOODS_CATEGORY FROM kbm_goods_category_info WHERE
+		MALL_ID = #{mallId} AND CATE_TYPE = #{cateType}
+	)
+]]>
+		</selectKey>
+		<selectKey order="AFTER">
+<![CDATA[
+DELETE FROM kbm_goods_category WHERE
+	MALL_ID = #{mallId} AND
+	(MALL_ID, GOODS_CODE) NOT IN (
+		SELECT MALL_ID, GOODS_CODE FROM kbm_goods_info WHERE
+		MALL_ID = #{mallId}
+	)
+]]>
+		</selectKey>
+
+	</insert>
+
+</sqlMap>
